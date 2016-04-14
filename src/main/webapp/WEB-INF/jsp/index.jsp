@@ -2,4 +2,4 @@
 
 zhushunshan
 
-${username}
+${user.name}
