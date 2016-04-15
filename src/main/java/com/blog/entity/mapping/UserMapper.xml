@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.dao.UserDaoImpl">
+	<resultMap id="gGoodsResultMap" type="User">
+			<result column="id" property="id" />
+			<result column="create_date" property="createDate" />
+			<result column="modify_date" property="modifyDate" />
+			<result column="department" property="department" />
+			<result column="email" property="email" />
+			<result column="is_enabled" property="isEnabled" />
+			<result column="is_locked" property="isLocked" />
+			<result column="locked_date" property="lockedDate" />
+			<result column="login_date" property="loginDate" />
+			<result column="login_failure_count" property="loginFailureCount" />
+			<result column="login_ip" property="loginIp" />
+			<result column="name" property="name" />
+			<result column="password" property="password" />
+			<result column="username" property="username" />
+	</resultMap>
+
+	<!-- 表名 -->
+	<sql id="tableNameSql">
+		user
+	</sql>
+
+	<!-- 用于select查询、insert的公用抽取的列 -->
+	<sql id="commonSelectColumnsPrefix">
+			id, create_date, modify_date, department, email, is_enabled, is_locked, locked_date, login_date, login_failure_count, login_ip, name, password, username 
+	</sql>
+	<!-- 按主键查找条件语句 -->
+	<sql id="conditionOnlyId">
+		id = #{id}
+	</sql>
+	
+	<sql id="mainSql">
+		SELECT
+			<include refid="commonSelectColumnsPrefix"/>
+		FROM
+			<include refid="tableNameSql"/>
+	</sql>
+
+	<sql id="varSql">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)">
+						AND id = #{id}
+					</if>
+					<if test="@Ognl@isNotEmpty(createDate)">
+						AND create_date = #{createDate}
+					</if>
+					<if test="@Ognl@isNotEmpty(modifyDate)">
+						AND modify_date = #{modifyDate}
+					</if>
+					<if test="@Ognl@isNotEmpty(department)">
+						AND department = #{department}
+					</if>
+					<if test="@Ognl@isNotEmpty(email)">
+						AND email = #{email}
+					</if>
+					<if test="@Ognl@isNotEmpty(isEnabled)">
+						AND is_enabled = #{isEnabled}
+					</if>
+					<if test="@Ognl@isNotEmpty(isLocked)">
+						AND is_locked = #{isLocked}
+					</if>
+					<if test="@Ognl@isNotEmpty(lockedDate)">
+						AND locked_date = #{lockedDate}
+					</if>
+					<if test="@Ognl@isNotEmpty(loginDate)">
+						AND login_date = #{loginDate}
+					</if>
+					<if test="@Ognl@isNotEmpty(loginFailureCount)">
+						AND login_failure_count = #{loginFailureCount}
+					</if>
+					<if test="@Ognl@isNotEmpty(loginIp)">
+						AND login_ip = #{loginIp}
+					</if>
+					<if test="@Ognl@isNotEmpty(name)">
+						AND name = #{name}
+					</if>
+					<if test="@Ognl@isNotEmpty(password)">
+						AND password = #{password}
+					</if>
+					<if test="@Ognl@isNotEmpty(username)">
+						AND username = #{username}
+					</if>
+		</where>
+	</sql>
+
+	<select id="findPageBy" parameterType="java.util.Map" resultMap="gGoodsResultMap">
+ 		<include refid="mainSql"/>
+ 		<include refid="varSql"/>
+		<if test="@Ognl@isNotEmpty(sortColumns)">
+			order by ${sortColumns}
+		</if>
+		<if test="@Ognl@isNotEmpty(page)">
+				${page}
+		</if>
+	</select>
+
+	<select id="getById" parameterType="Long" resultMap="gGoodsResultMap">
+		<include refid="mainSql"/>
+		where <include refid="conditionOnlyId"/>
+	</select>
+
+	<select id="getCountBy" parameterType="java.util.Map" resultType="INTEGER">
+		SELECT
+			COUNT(*)
+		FROM
+			<include refid="tableNameSql"/>
+		<include refid="varSql"/>
+	</select>
+
+	<select id="findListBy" parameterType="java.util.Map" resultMap="gGoodsResultMap">
+		<include refid="mainSql"/>
+		<include refid="varSql"/>
+	</select>
+
+	<insert id="save" parameterType="User">
+		insert into
+			<include refid="tableNameSql"/>
+		(
+			<include refid="commonSelectColumnsPrefix"/>
+		)
+		values
+		(
+				#{id},
+				#{createDate},
+				#{modifyDate},
+				#{department},
+				#{email},
+				#{isEnabled},
+				#{isLocked},
+				#{lockedDate},
+				#{loginDate},
+				#{loginFailureCount},
+				#{loginIp},
+				#{name},
+				#{password},
+				#{username}
+			
+		)
+	</insert>
+
+	<update id="update" parameterType="User">
+		update
+			<include refid="tableNameSql"/>
+		set
+				id = #{id},
+				create_date = #{createDate},
+				modify_date = #{modifyDate},
+				department = #{department},
+				email = #{email},
+				is_enabled = #{isEnabled},
+				is_locked = #{isLocked},
+				locked_date = #{lockedDate},
+				login_date = #{loginDate},
+				login_failure_count = #{loginFailureCount},
+				login_ip = #{loginIp},
+				name = #{name},
+				password = #{password},
+				username = #{username}
+		where <include refid="conditionOnlyId"/>
+	</update>
+	<delete id="deleteByIds" parameterType="list">
+		delete from <include refid="tableNameSql"/> 
+		where id in <foreach index="index" item="item" collection="array" separator="," open="(" close=")" >#{item}</foreach>
+	</delete>
+
+	<delete id="deleteById" parameterType="Object">
+		delete from <include refid="tableNameSql"/> where <include refid="conditionOnlyId"/>
+	</delete>
+
+</mapper>
