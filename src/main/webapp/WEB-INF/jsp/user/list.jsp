@@ -37,8 +37,7 @@
 		</div>
 		<div id="div_table_controller" class="center" style="padding: 4px;">
 			<a class="btn btn-primary btn-xs" href="addUser.html"
-				target="frane_two">添加</a> <a class="btn btn-primary btn-xs">编辑</a> <a
-				class="btn btn-primary btn-xs">删除</a>
+				target="frane_two">添加</a> <a class="btn btn-primary btn-xs">删除</a>
 		</div>
 		<div id="div_table_body" class="panel-body" style="padding: 0px;">
 			<div id="table_databody">
@@ -46,7 +45,7 @@
 					style="margin: 0px">
 					<thead style="padding: 0px;">
 						<tr>
-							<th><input type="checkbox" name="post[]" value="2"></th>
+							<th><input type="checkbox"  id="invertSelection"  name="post[]" value="2"></th>
 							<th class="th-sortable" data-toggle="class">名称 <span
 								class="th-sort"> <i class="icon-sort-down text"></i> <i
 									class="icon-sort-up text-active"></i> <i class="icon-sort"></i>
@@ -61,7 +60,7 @@
 
 						<c:forEach var="user" items="${users}">
 							<tr>
-								<td><input type="checkbox" name="post[]" value="2"></td>
+								<td><input type="checkbox"name="post[]" value="2"></td>
 								<td>${user.name }</td>
 								<td>${user.username }</td>
 								<td>${user.email }</td>
@@ -105,6 +104,17 @@
 			var table_hei =  $("#div_table_body").height();
 			var table_headH = $("#table_head").height();
 			$("#table_databody").height(table_hei - table_headH);
+			
+			$("#invertSelection").click(function () {
+				var checks  = $("#table_body").find("input");
+				
+				$.each(checks,function (){
+					var isChecked =  $(this).attr("selected");
+					$(this).attr("checked",!isChecked);
+				});
+				
+				
+			});
 
 		});
 	</script>

@@ -44,8 +44,8 @@
 		<div id="div_table_heading" class="panel-heading"
 			style="padding: 0px; margin: 0px">
 			<ol class="breadcrumb" style="margin: 0px">
-				<li><a href="/Brand.html">品牌管理</a></li>
-				<li><a href="/addBrand.html">品牌添加</a></li>
+				<li><a href="/admin/user/userList.html">用户管理</a></li>
+				<li><a href="/admin/user/addUser.html">用户添加</a></li>
 			</ol>
 		</div>
 		<div id="div_add_body" class="panel-body" style="padding: 0px">
@@ -89,7 +89,7 @@
 							<label for="inputPassword3" class="col-sm-2 control-label"></label>
 							<div class="col-sm-10">
 								  <button class="btn primary">提交</button>
-								  <button class="btn primary">取消</button>
+								  <button type="button" class="btn primary" href="/admin/user/userList.html">取消</button>
 							</div>
 						</div>
 					</form>

@@ -32,7 +32,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a data-toggle="collapse" data-toggle="collapse"
-						data-parent="#accordion">商品管理</a>
+						data-parent="#accordion">菜单</a>
 				</h4>
 			</div>
 			<div id="collapseOne" class="panel-collapse collapse in" >
@@ -40,10 +40,10 @@
 					<nav class="nav-primary" style="margin: 0px">
 						<ul class="nav">
 							<li><a href="/admin/user/list.html" target="frane_two"> <i
-									class="icon-tasks"></i> <span>商品管理</span>
+									class="icon-tasks"></i> <span>用户管理</span>
 							</a></li>
-							<li><a href="list.html" target="frane_two"> <i
-									class="icon-tasks"></i> <span>商品分类</span>
+							<li><a href="/admin/navigation/list.html" target="frane_two"> <i
+									class="icon-tasks"></i> <span>导航管理</span>
 							</a></li>
 							<li><a href="list.html" target="frane_two"> <i
 									class="icon-tasks"></i> <span>商品参数</span>
