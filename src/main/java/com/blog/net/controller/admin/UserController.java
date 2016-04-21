@@ -23,8 +23,6 @@ public class UserController {
 	@Autowired(required=true)
 	UserDaoImpl userDaoImpl;
 	
-
-	
 	
 	@RequestMapping(value="/save",method={RequestMethod.POST})
 	public String add(User user,ModelMap model){
@@ -35,7 +33,7 @@ public class UserController {
 		userDaoImpl.save(user);
 		List<User> users = userDaoImpl.findListBy(null);
 		model.put("users", users);
-		return "userList";
+		return "user/list";
 	}
 	
 	
@@ -43,7 +41,7 @@ public class UserController {
 	public String list(User user,ModelMap model){
 		List<User> users = userDaoImpl.findListBy(null);
 		model.put("users", users);
-		return "userList";
+		return "user/list";
 	}
 	
 	
@@ -56,7 +54,7 @@ public class UserController {
 	
 	@RequestMapping(value="/addUser",method={RequestMethod.GET})
 	public String addUser(){
-		return "addUser";
+		return "user/add";
 	}
 	
 	@RequestMapping(value="/delete/{id}",method={RequestMethod.GET})
@@ -66,7 +64,7 @@ public class UserController {
 		userDaoImpl.deleteByIds(ids);
 		List<User> users = userDaoImpl.findListBy(null);
 		model.put("users", users);
-		return "userList";
+		return "user/list";
 	}
 	
 	
