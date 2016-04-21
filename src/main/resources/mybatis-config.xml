@@ -6,6 +6,7 @@
     <!-- 实体类,简称 -设置别名 -->  
     <typeAliases>  
          <typeAlias alias="User" type="com.blog.entity.User" />  
+         <typeAlias alias="Navigation" type="com.blog.entity.Navigation" />  
     </typeAliases>  
     <!-- 实体接口映射资源 -->  
     <!-- 
@@ -13,6 +14,7 @@
     -->  
     <mappers>  
         <mapper resource="com/blog/entity/mapping/UserMapper.xml" />  
+         <mapper resource="com/blog/entity/mapping/NavigationMapper.xml" />  
     </mappers>  
   
 </configuration>    
