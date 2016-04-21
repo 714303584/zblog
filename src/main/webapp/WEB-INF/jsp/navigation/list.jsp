@@ -31,14 +31,23 @@
 		<div id="div_table_heading" class="panel-heading"
 			style="padding: 0px; margin: 0px">
 			<ol class="breadcrumb" style="margin: 0px">
-				<li><a href="#">导航管理</a></li>
-				<li><a href="#">导航列表</a></li>
+				<li><a href="/admin/navigation/list.html">导航管理</a></li>
+				<li><a href="/admin/navigation/list.html">导航列表</a></li>
 			</ol>
 		</div>
 		<div id="div_table_controller" class="center" style="padding: 4px;">
-			<a class="btn btn-primary btn-xs" href="/admin/navigation/addNavigation.html"
-				target="frane_two">添加</a> <a class="btn btn-primary btn-xs">删除</a>
+			<a class="btn btn-primary btn-xs" href="/admin/navigation/add.html"
+				target="frane_two">添加</a> <a id="deleteByIds" class="btn btn-primary btn-xs">删除</a>
 		</div>
+		
+		<div style="display: none;">
+			<form id="deleteForm" action="/admin/navigation/deleteByIds" method="post">
+			
+			
+			</form>
+		</div>
+		
+		
 		<div id="div_table_body" class="panel-body" style="padding: 0px;">
 			<div id="table_databody">
 				<table class="table  table-hover table-condensed b-t text-sm"
@@ -52,8 +61,8 @@
 							</span>
 							</th>
 							<th>类型</th>
-							<th>邮箱</th>
-							<th>父菜单标识</th>
+							<th>父级</th>
+							<th>排序</th>
 							<th>控制</th>
 						</tr>
 					</thead>
@@ -61,7 +70,7 @@
 
 						<c:forEach var="navigation" items="${navigations}">
 							<tr>
-								<td><input type="checkbox"name="post[]" value="2">${navigation.id}</td>
+								<td><input type="checkbox"name="post[]" value="${navigation.id}">${navigation.id}</td>
 								<td>${navigation.name }</td>
 								<td>
 								<c:choose>
@@ -73,9 +82,10 @@
 								   </c:otherwise>  
 								</c:choose>
 								</td>
-								<td>${navigation.parent}</td>
+								<td>${navigation.parentname}</td>
+								<td>${navigation.orders }</td>
 								
-								<td><a class="btn btn-primary btn-xs">编辑</a> <a
+								<td><a href="/admin/navigation/show/${navigation.id}" class="btn btn-primary btn-xs">编辑</a> <a
 									href="/admin/navigation/delete/${navigation.id}"
 									class="btn btn-primary btn-xs">删除</a></td>
 
@@ -125,9 +135,24 @@
 					var isChecked =  $(this).prop("checked");
 					$(this).prop("checked",!isChecked);
 				});
+			});
+			
+			$("#deleteByIds").click(function () {
+				var checks  = $("#table_body").find("input");
 				
+				var myids = new Array();
+				$.each(checks,function (){
+					var isChecked =  $(this).prop("checked");
+					if(isChecked){
+						var input =  '<input type="text" class="form-control" name="ids" style="width: 200px" value="'+$(this).val()+'" >';
+						$("#deleteForm").append(input);
+						
+					}
+				});
+				$("#deleteForm").submit();
 				
 			});
+			
 
 		});
 	</script>

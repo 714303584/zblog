@@ -64,12 +64,21 @@
 					style="overflow: scroll; width: 100%;">
 					<div>.</div>
 					<form id="commentForm" class="form-horizontal" role="form"
-						method="post" action="/admin/navigation/save/">
+						method="post" action="/admin/navigation/edit/">
+						
+						<div class="form-group" style="width: 100%;display: none;">
+							<label for="inputEmail3" class="col-sm-2 control-label">id：</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" name="id"
+									style="width: 200px" value="${navigation.id}">
+							</div>
+						</div>
+						
 						<div class="form-group" style="width: 100%">
 							<label for="inputEmail3" class="col-sm-2 control-label">名称：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="name" name="name"
-									style="width: 200px" required>
+									style="width: 200px" value="${navigation.name}" required>
 							</div>
 						</div>
 						<div class="form-group" style="width: 100%">
@@ -110,7 +119,7 @@
 							<label for="inputPassword3" class="col-sm-2 control-label">链接：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="url" name="url"
-									style="width: 200px" required>
+									style="width: 200px" value="${navigation.url}" >
 							</div>
 						</div>
 
@@ -118,16 +127,7 @@
 							<label for="inputPassword3" class="col-sm-2 control-label">排序：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="orders"
-									name="orders" style="width: 200px" required>
-							</div>
-						</div>
-						
-						<div class="form-group" style="width: 100%">
-							<label for="inputPassword3" class="col-sm-2 control-label">描述：</label>
-							<div class="col-sm-10">
-								  <script id="container" name="content" type="text/plain">
-       								 这里写你的初始化内容
-   								 </script>
+									name="orders" style="width: 200px" value="${navigation.orders }">
 							</div>
 						</div>
 						
@@ -145,9 +145,6 @@
 		</div>
 	</div>
 
-  <script type="text/javascript" src="/js/ueditor/ueditor.config.js"></script>
-    <!-- 编辑器源码文件 -->
-    <script type="text/javascript" src="/js/ueditor/ueditor.all.js"></script>
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
@@ -160,8 +157,6 @@
 			$("#tab_body").height(docHeight-headHeight-tabHeadHei);
 			$("#div_info").height(docHeight-headHeight-tabHeadHei);
 			
-			
-			 var ue = UE.getEditor('container');
 			
 			
 			$("#type").change(function() {
@@ -193,17 +188,10 @@
 				$("#parentname").val(parentname);
 			});
 			
+			$("#parent").val(${navigation.parent});
+			$("#type").val(${navigation.type});
 			
 			
-		});
-		
-	
-		
-		
-		
-	
-		$().ready(function() {
-		   
 		});
 		  //实例化编辑器
 	    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
