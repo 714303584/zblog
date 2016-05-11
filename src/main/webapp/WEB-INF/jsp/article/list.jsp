@@ -111,8 +111,6 @@
 			$("#table_databody").height(table_hei - table_headH);
 			
 			
-			
-			
 			$("#invertSelection").click(function () {
 				var checks  = $("#table_body").find("input");
 				$.each(checks,function (){

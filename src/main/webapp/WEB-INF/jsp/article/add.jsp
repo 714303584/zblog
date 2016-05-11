@@ -64,7 +64,7 @@
 					style="overflow: scroll; width: 100%;">
 					<div>.</div>
 					<form id="commentForm" class="form-horizontal" role="form"
-						method="post" action="/admin/navigation/save/">
+						method="post" action="/admin/article/save/">
 						<div class="form-group" style="width: 100%">
 							<label for="inputEmail3" class="col-sm-2 control-label">标题：</label>
 							<div class="col-sm-10">
@@ -75,9 +75,8 @@
 						<div id="parent_div" class="form-group" style="width: 100%">
 							<label for="inputPassword3" class="col-sm-2 control-label">所属：</label>
 							<div class="col-sm-10">
-								<select id="parent" name="parent" class="form-control"
+								<select id="articleCategory" name="articleCategory" class="form-control"
 									style="width: 200px">
-									<option value="0">top</option>
 									<c:forEach var="navigation" items="${navigations}">
 										<option value="${navigation.id}">${navigation.name }</option>
 									</c:forEach>
@@ -92,41 +91,52 @@
 									name="parentname" style="width: 200px" value="top">
 							</div>
 						</div>
-
+						
 						<div class="form-group" style="width: 100%;">
-							<label for="inputPassword3" class="col-sm-2 control-label">链接：</label>
+							<label for="inputPassword3" class="col-sm-2 control-label">作者：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="url" name="url"
+								<input type="text" class="form-control" id="author" name="author"
 									style="width: 200px" required>
-							</div>
-						</div>
-
-						<div class="form-group" style="width: 100%">
-							<label for="inputPassword3" class="col-sm-2 control-label">排序：</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="orders"
-									name="orders" style="width: 200px" required>
 							</div>
 						</div>
 
 						<div class="form-group" style="width: 100%">
 							<label for="inputPassword3" class="col-sm-2 control-label">图片：</label>
 							<div class="col-sm-5">
-								<input type="text" class="form-control" id="log"
-									name="log" style="width: 200px"
+								<input type="text" class="form-control" id="cover"
+									name="cover" style="width: 200px"
 									required>
 									
 							</div>
 							<button type="button"  class="btn primary" style="display:inline;"  onclick="imagesSelect()" >选择</button>  <a id="logshow"  href="#">查看</a> 
 						</div>
 							 
-							
-							<!-- 	onclick="imagesSelect()" <input type="file" class="form-control" id="images"
-									name="images" style="width: 200px"  onchange="fileChange(this);"
-									required>  -->
+						<div class="form-group" style="width: 100%;">
+							<label for="inputPassword3" class="col-sm-2 control-label">页面标题：</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="seoTitle" name="seoTitle"
+									style="width: 200px" required>
+							</div>
+						</div>
+						
+						<div class="form-group" style="width: 100%;">
+							<label for="inputPassword3" class="col-sm-2 control-label">页面关键词：</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="seoKeywords" name="seoKeywords"
+									style="width: 200px" required>
+							</div>
+						</div>
+						
+							<div class="form-group" style="width: 100%;">
+							<label for="inputPassword3" class="col-sm-2 control-label">页面描述：</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="seoDescription" name="seoDescription"
+									style="width: 200px" required>
+							</div>
+						</div>
 
 						<div class="form-group" style="width: 100%">
-							<label for="inputPassword3" class="col-sm-2 control-label">描述：</label>
+							<label for="inputPassword3" class="col-sm-2 control-label">内容：</label>
 							<div class="col-sm-10">
 								<script id="container" name="content" type="text/plain">
        								 这里写你的初始化内容
@@ -196,7 +206,7 @@
               fileElementId: "images",                        //文件选择框的id属性  
               success: function(data, status){ 
             	  $("#logshow").attr("href",data.url);
-                  alert(data);
+            	  $("#cover").val(data.url);
              },error: function (data, status, e){  
                       showDialogWithMsg('ideaMsg','提示','文件错误！');  
              }  

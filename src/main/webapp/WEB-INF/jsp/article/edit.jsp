@@ -63,74 +63,99 @@
 				<div class="tab-pane active" id="div_info"
 					style="overflow: scroll; width: 100%;">
 					<div>.</div>
+					
+					
 					<form id="commentForm" class="form-horizontal" role="form"
-						method="post" action="/admin/navigation/edit/">
+						method="post" action="/admin/article/edit/">
 						
-						<div class="form-group" style="width: 100%;display: none;">
+							<div class="form-group" style="width: 100%;display: none;">
 							<label for="inputEmail3" class="col-sm-2 control-label">id：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" name="id"
-									style="width: 200px" value="${navigation.id}">
+									style="width: 200px" value="${article.id}">
 							</div>
-						</div>
-						
+							</div>
+							
 						<div class="form-group" style="width: 100%">
-							<label for="inputEmail3" class="col-sm-2 control-label">名称：</label>
+							<label for="inputEmail3" class="col-sm-2 control-label">标题：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="name" name="name"
-									style="width: 200px" value="${navigation.name}" required>
+								<input type="text" class="form-control" id="title" name="title"
+									style="width: 200px" value="${article.title}" required>
 							</div>
 						</div>
-						<div class="form-group" style="width: 100%">
-							<label for="inputPassword3" class="col-sm-2 control-label">类型：</label>
-							<div class="col-sm-10">
-								<select id="type" name="type" class="form-control"
-									style="width: 200px">
-									<option value="1">菜单</option>
-									<option value="2">链接</option>
-								</select>
-							</div>
-						</div>
-
-
-
 						<div id="parent_div" class="form-group" style="width: 100%">
 							<label for="inputPassword3" class="col-sm-2 control-label">所属：</label>
 							<div class="col-sm-10">
-								<select id="parent" name="parent" class="form-control"
+								<select id="articleCategory" name="articleCategory" class="form-control"
 									style="width: 200px">
-									<option value="0">top</option>
-									<c:forEach var="navigation" items="${navigations}">
-										<option value="${navigation.id}">${navigation.name }</option>
+									<c:forEach var="item" items="${navigations}">
+										<option value="${item.id}">${item.name }</option>
 									</c:forEach>
 								</select>
 							</div>
 						</div>
-						
-						<div class="form-group" style="width: 100%;display: none;">
-							<label  class="col-sm-2 control-label">所属：</label>
+
+						<div class="form-group" style="width: 100%; display: none;">
+							<label class="col-sm-2 control-label">所属：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="parentname" name="parentname"
-									style="width: 200px" value="top">
+								<input type="text" class="form-control" id="parentname"
+									name="parentname" value="${navigation.name}" style="width: 200px" value="top">
 							</div>
 						</div>
-
+						
 						<div class="form-group" style="width: 100%;">
-							<label for="inputPassword3" class="col-sm-2 control-label">链接：</label>
+							<label for="inputPassword3" class="col-sm-2 control-label">作者：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="url" name="url"
-									style="width: 200px" value="${navigation.url}" >
+								<input type="text" class="form-control" id="author" name="author"
+									style="width: 200px" value="${article.author}"  required>
 							</div>
 						</div>
 
 						<div class="form-group" style="width: 100%">
-							<label for="inputPassword3" class="col-sm-2 control-label">排序：</label>
+							<label for="inputPassword3" class="col-sm-2 control-label">图片：</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="cover"
+									name="cover" style="width: 200px"
+									value="${article.cover}" required>
+									
+							</div>
+							<button type="button"  class="btn primary" style="display:inline;"  onclick="imagesSelect()" >选择</button>  <a id="logshow"  href="#">查看</a> 
+						</div>
+							 
+						<div class="form-group" style="width: 100%;">
+							<label for="inputPassword3" class="col-sm-2 control-label">页面标题：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="orders"
-									name="orders" style="width: 200px" value="${navigation.orders }">
+								<input type="text" class="form-control" id="seoTitle" name="seoTitle"
+									style="width: 200px" value="${article.seoTitle}" required>
 							</div>
 						</div>
 						
+						<div class="form-group" style="width: 100%;">
+							<label for="inputPassword3" class="col-sm-2 control-label">页面关键词：</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="seoKeywords" name="seoKeywords"
+									style="width: 200px" value="${article.seoKeywords}"  required>
+							</div>
+						</div>
+						
+							<div class="form-group" style="width: 100%;">
+							<label for="inputPassword3" class="col-sm-2 control-label">页面描述：</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="seoDescription" name="seoDescription"
+									style="width: 200px" value="${article.seoDescription}"  required>
+							</div>
+						</div>
+
+						<div class="form-group" style="width: 100%">
+							<label for="inputPassword3" class="col-sm-2 control-label">内容：</label>
+							<div class="col-sm-10">
+								<script id="container" name="content" type="text/plain">
+       								 ${article.content}
+   								 </script>
+							</div>
+						</div>
+
+
 						<div class="form-group" style="width: 100%">
 							<label for="inputPassword3" class="col-sm-2 control-label"></label>
 							<div class="col-sm-10">
@@ -140,14 +165,65 @@
 							</div>
 						</div>
 					</form>
+					
+					<div style="display: none;">
+						<input type="file" id="images"
+									name="images"  onchange="fileChange(this);" > 
+					
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<script type="text/javascript" src="/js/ueditor/ueditor.config.js"></script>
+	<!-- 编辑器源码文件 -->
+	<script type="text/javascript" src="/js/ueditor/ueditor.all.js"></script>
 	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery/ajaxfileupload.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	
+	
+	function imagesSelect() {
+		$("#images").click();
+		
+	}
+	
+	
+	function fileChange(target) {
+	     var fileSize = 0;         
+	     if (!target.files) {     
+	       var filePath = target.value;     
+	       var fileSystem = new ActiveXObject("Scripting.FileSystemObject");        
+	       var file = fileSystem.GetFile (filePath);     
+	       fileSize = file.Size;    
+	     } else {    
+	      fileSize = target.files[0].size;     
+	      }   
+	      var size = fileSize / 1024;    
+	      if(size>2000){  
+	       alert("附件不能大于2M");
+	       target.value="";
+	       return
+	      }
+	      
+	      $.ajaxFileUpload({  
+	    	  url:"/js/ueditor/jsp/controller.jsp?action=uploadimage",            //需要链接到服务器地址  
+             secureuri:true,  
+             dataType:"json",
+             fileElementId: "images",                        //文件选择框的id属性  
+             success: function(data, status){ 
+           	  $("#logshow").attr("href",data.url);
+           	  $("#cover").val(data.url);
+            },error: function (data, status, e){  
+                     showDialogWithMsg('ideaMsg','提示','文件错误！');  
+            }  
+	      });  
+
+	    } 
+
+	
 		$(document).ready(function() {
 			var docHeight = $(window).height();
 			var docWidth = $(window).width();
@@ -158,6 +234,9 @@
 			$("#div_info").height(docHeight-headHeight-tabHeadHei);
 			
 			
+			
+			
+			 var ue = UE.getEditor('container');
 			
 			$("#type").change(function() {
 				var typeValue  =  $(this).val();
@@ -188,8 +267,7 @@
 				$("#parentname").val(parentname);
 			});
 			
-			$("#parent").val(${navigation.parent});
-			$("#type").val(${navigation.type});
+			$("#articleCategory").val(${navigation.id});
 			
 			
 		});
