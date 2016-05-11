@@ -12,7 +12,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.blog.dao.ArticleDaoImpl;
 import com.blog.dao.NavigationDaoImpl;
+import com.blog.entity.Article;
 import com.blog.entity.Navigation;
 
 
@@ -22,6 +24,9 @@ public class IndexController {
 	
 	@Autowired(required = true)
 	NavigationDaoImpl navigationDaoImpl;
+	
+	@Autowired(required = true)
+	ArticleDaoImpl  articleDaoImpl;
 	
 	@RequestMapping(value={"/index"},method={RequestMethod.GET})
 	public String index(ModelMap model){
@@ -39,7 +44,8 @@ public class IndexController {
 				List<Navigation> childs =  navigationDaoImpl.findListBy(param);
 				menus.put(navigation, childs);
 		}
-		System.out.println(menus.toString());
+		List<Article> articles = articleDaoImpl.findListBy(null);
+		model.put("articles", articles);
 		model.put("navigations", menus);
 		return "clients/index";
 	}
