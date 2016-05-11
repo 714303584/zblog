@@ -97,12 +97,12 @@
 								</select>
 							</div>
 						</div>
-						
-						<div class="form-group" style="width: 100%;display: none;">
-							<label  class="col-sm-2 control-label">所属：</label>
+
+						<div class="form-group" style="width: 100%; display: none;">
+							<label class="col-sm-2 control-label">所属：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="parentname" name="parentname"
-									style="width: 200px" value="top">
+								<input type="text" class="form-control" id="parentname"
+									name="parentname" style="width: 200px" value="top">
 							</div>
 						</div>
 
@@ -121,16 +121,33 @@
 									name="orders" style="width: 200px" required>
 							</div>
 						</div>
-						
+
+						<div class="form-group" style="width: 100%">
+							<label for="inputPassword3" class="col-sm-2 control-label">图片：</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="log"
+									name="log" style="width: 200px"
+									required>
+									
+							</div>
+							<button type="button"  class="btn primary" style="display:inline;"  onclick="imagesSelect()" >选择</button>  <a id="logshow"  href="#">查看</a> 
+						</div>
+							 
+							
+							<!-- 	onclick="imagesSelect()" <input type="file" class="form-control" id="images"
+									name="images" style="width: 200px"  onchange="fileChange(this);"
+									required>  -->
+
 						<div class="form-group" style="width: 100%">
 							<label for="inputPassword3" class="col-sm-2 control-label">描述：</label>
 							<div class="col-sm-10">
-								  <script id="container" name="content" type="text/plain">
+								<script id="container" name="content" type="text/plain">
        								 这里写你的初始化内容
    								 </script>
 							</div>
 						</div>
-						
+
+
 						<div class="form-group" style="width: 100%">
 							<label for="inputPassword3" class="col-sm-2 control-label"></label>
 							<div class="col-sm-10">
@@ -140,17 +157,73 @@
 							</div>
 						</div>
 					</form>
+					
+					
+					<div style="display: none;">
+						<input type="file" id="images"
+									name="images"  onchange="fileChange(this);" > 
+					
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+		
+		</div>
 
-  <script type="text/javascript" src="/js/ueditor/ueditor.config.js"></script>
-    <!-- 编辑器源码文件 -->
-    <script type="text/javascript" src="/js/ueditor/ueditor.all.js"></script>
+	<script type="text/javascript" src="/js/ueditor/ueditor.config.js"></script>
+	<!-- 编辑器源码文件 -->
+	<script type="text/javascript" src="/js/ueditor/ueditor.all.js"></script>
 	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery/ajaxfileupload.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	
+	
+	function imagesSelect() {
+		$("#images").click();
+		
+	}
+	
+	
+	function fileChange(target) {
+	     var fileSize = 0;         
+	     if (!target.files) {     
+	       var filePath = target.value;     
+	       var fileSystem = new ActiveXObject("Scripting.FileSystemObject");        
+	       var file = fileSystem.GetFile (filePath);     
+	       fileSize = file.Size;    
+	     } else {    
+	      fileSize = target.files[0].size;     
+	      }   
+	      var size = fileSize / 1024;    
+	      if(size>2000){  
+	       alert("附件不能大于2M");
+	       target.value="";
+	       return
+	      }
+	      
+	      $.ajaxFileUpload({  
+	    	  url:"/js/ueditor/jsp/controller.jsp?action=uploadimage",            //需要链接到服务器地址  
+              secureuri:true,  
+              dataType:"json",
+              fileElementId: "images",                        //文件选择框的id属性  
+              success: function(data, status){ 
+            	  $("#logshow").attr("href",data.url);
+                  alert(data);
+             },error: function (data, status, e){  
+                      showDialogWithMsg('ideaMsg','提示','文件错误！');  
+             }  
+	      });  
+
+	    } 
+
+	
+	
+	
+	
+	
+	
+	
 		$(document).ready(function() {
 			var docHeight = $(window).height();
 			var docWidth = $(window).width();
