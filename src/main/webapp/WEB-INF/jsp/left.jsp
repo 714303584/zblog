@@ -45,8 +45,8 @@
 							<li><a href="/admin/navigation/list.html" target="frane_two"> <i
 									class="icon-tasks"></i> <span>导航管理</span>
 							</a></li>
-							<li><a href="list.html" target="frane_two"> <i
-									class="icon-tasks"></i> <span>商品参数</span>
+							<li><a href="/admin/article/list.html" target="frane_two"> <i
+									class="icon-tasks"></i> <span>文章管理</span>
 							</a></li>
 							<li><a href="list.html" target="frane_two"> <i
 									class="icon-tasks"></i> <span>商品属性</span>
@@ -57,8 +57,8 @@
 							<li><a href="Brand.html" target="frane_two"> <i
 									class="icon-tasks"></i> <span>品牌管理</span>
 							</a></li>
-							<li><a href="list.html" target="frane_two"> <i
-									class="icon-tasks"></i> <span>到货通知</span>
+							<li><a href="/admin/setting/show.html" target="frane_two"> <i
+									class="icon-tasks"></i> <span>站点设置</span>
 							</a></li>
 						</ul>
 					</nav>
