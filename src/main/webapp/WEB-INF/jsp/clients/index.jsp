@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
 	pageEncoding="utf8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%> 
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lte-ie9 lt-ie8 lt-ie7 lte-ie10"> <![endif]-->
@@ -221,6 +222,8 @@
 													</div>
 
 
+													<!-- 
+													
 													<div
 														class="col-md-6 menu-item-content-col menu-item-content-col--hidden-md">
 														<div class="menu-editorial-block-module">
@@ -258,6 +261,9 @@
 															</div>
 														</div>
 													</div>
+													
+													
+													 -->
 
 												</div>
 											</div>
@@ -405,303 +411,21 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="container-fluid">
-		<div
-			class="global-module two-block-editorial-module row row-eq-height">
-			<div class="col-md-6 row-eq-height">
-				<div class="module-inner module-inner--no-background-color"
-					style="background-color: #ffffff">
-					<a
-						href="http://store.dolcegabbana.com/subhome.asp?site=dolceegabbana&gender=D&section=luxury-summer-cerimony-events-prom-dresses&utm_source=brandsite&utm_medium=banner&utm_campaign=store-wmss16-summer-cerimony-events-dresses"
-						class="opacity-hover" target='_blank'>
-						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\dolce-and-gabbana-summer-2016-woman-cerimonia-online-store-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/dolce-and-gabbana-summer-2016-woman-cerimonia-online-store-450x253.jpg 450w,
-			wp-content/uploads/dolce-and-gabbana-summer-2016-woman-cerimonia-online-store-560x315.jpg 560w,
-			wp-content/uploads/dolce-and-gabbana-summer-2016-woman-cerimonia-online-store-800x450.jpg 800w,
-			wp-content/uploads/dolce-and-gabbana-summer-2016-woman-cerimonia-online-store-1020x574.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
-
-						</div>
-					</a>
-					<div class="module-content">
-						<header class="module-header">
-							<a
-								href="http://store.dolcegabbana.com/subhome.asp?site=dolceegabbana&gender=D&section=luxury-summer-cerimony-events-prom-dresses&utm_source=brandsite&utm_medium=banner&utm_campaign=store-wmss16-summer-cerimony-events-dresses"
-								target='_blank'><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">ONLINE
-									STORE</h2> <span class="global-subtitle global-subtitle--h2">Celebrate
-									in style this summer</span></a>
-						</header>
-						<article class="module-article">
-							<p class="global-paragraph">Elegant eveningwear and timeless
-								tuxedos for a stylish summer</p>
-						</article>
-						<a
-							href="http://store.dolcegabbana.com/subhome.asp?site=dolceegabbana&gender=D&section=luxury-summer-cerimony-events-prom-dresses&utm_source=brandsite&utm_medium=banner&utm_campaign=store-wmss16-summer-cerimony-events-dresses"
-							target='_blank' class="dg-btn dg-btn--black">Shop now</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 row-eq-height">
-				<div class="module-inner module-inner--no-background-color"
-					style="background-color: #ffffff">
-					<a
-						href="http://store.dolcegabbana.com/subhome.asp?site=dolceegabbana&gender=U&section=dg-gentlemen-casual-shoes&utm_source=brandsite&utm_medium=banner&utm_campaign=store-mnss16-gentleman-casual-shoes-mondello"
-						class="opacity-hover" target='_blank'>
-						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\dolce-and-gabbana-summer-2016-man-casual-shoes-mondello-online-store-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/dolce-and-gabbana-summer-2016-man-casual-shoes-mondello-online-store-450x253.jpg 450w,
-			wp-content/uploads/dolce-and-gabbana-summer-2016-man-casual-shoes-mondello-online-store-560x315.jpg 560w,
-			wp-content/uploads/dolce-and-gabbana-summer-2016-man-casual-shoes-mondello-online-store-800x450.jpg 800w,
-			wp-content/uploads/dolce-and-gabbana-summer-2016-man-casual-shoes-mondello-online-store-1020x574.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
-
-						</div>
-					</a>
-					<div class="module-content">
-						<header class="module-header">
-							<a
-								href="http://store.dolcegabbana.com/subhome.asp?site=dolceegabbana&gender=U&section=dg-gentlemen-casual-shoes&utm_source=brandsite&utm_medium=banner&utm_campaign=store-mnss16-gentleman-casual-shoes-mondello"
-								target='_blank'><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">ONLINE
-									STORE</h2> <span class="global-subtitle global-subtitle--h2">Colourful
-									slip ons</span></a>
-						</header>
-						<article class="module-article">
-							<p class="global-paragraph">A selection of casual slip ons
-								with an elegant twist</p>
-						</article>
-						<a
-							href="http://store.dolcegabbana.com/subhome.asp?site=dolceegabbana&gender=U&section=dg-gentlemen-casual-shoes&utm_source=brandsite&utm_medium=banner&utm_campaign=store-mnss16-gentleman-casual-shoes-mondello"
-							target='_blank' class="dg-btn dg-btn--black">SHOP NOW</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="container-fluid">
-		<div
-			class="global-module two-block-editorial-module row row-eq-height">
-			<div class="col-md-6 row-eq-height">
-				<div class="module-inner " style="background-color: #e4e4e4">
-					<a
-						href="discover/dolce-and-gabbana-and-smeg-collaboration-for-carretto-siciliano-refrigerator/"
-						class="opacity-hover">
-						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\dolce-and-gabbana-and-smeg-collaboration-for-carretto-siciliano-refrigerator-Landscape-banner-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/dolce-and-gabbana-and-smeg-collaboration-for-carretto-siciliano-refrigerator-Landscape-banner-450x253.jpg 450w,
-			wp-content/uploads/dolce-and-gabbana-and-smeg-collaboration-for-carretto-siciliano-refrigerator-Landscape-banner-560x315.jpg 560w,
-			wp-content/uploads/dolce-and-gabbana-and-smeg-collaboration-for-carretto-siciliano-refrigerator-Landscape-banner-800x450.jpg 800w,
-			wp-content/uploads/dolce-and-gabbana-and-smeg-collaboration-for-carretto-siciliano-refrigerator-Landscape-banner-1020x574.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
-
-						</div>
-					</a>
-					<div class="module-content">
-						<header class="module-header">
-							<a
-								href="discover/dolce-and-gabbana-and-smeg-collaboration-for-carretto-siciliano-refrigerator/"><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">Frigorifero
-									d’Arte</h2> <span class="global-subtitle global-subtitle--h2">Sicilian
-									aesthetics and state of the art technology</span></a>
-						</header>
-						<article class="module-article">
-							<p class="global-paragraph">Dolce&Gabbana and Smeg join
-								forces in the creation of 100 numbered fridges painted in the
-								style and according to the tradition of the iconic Sicilian
-								horse drawn carts.</p>
-						</article>
-						<a
-							href="discover/dolce-and-gabbana-and-smeg-collaboration-for-carretto-siciliano-refrigerator/"
-							class="dg-btn dg-btn--black">DISCOVER</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 row-eq-height">
-				<div class="module-inner " style="background-color: #e4e4e4">
-					<a
-						href="discover/dolce-and-gabbana-and-smeg-limited-edition-fridge-launch-party-in-milan/"
-						class="opacity-hover">
-						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\dolce-gabbana-and-smeg-limited-edition-fridge-launch-party-in-milan-Landscape-NEW-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/dolce-gabbana-and-smeg-limited-edition-fridge-launch-party-in-milan-Landscape-NEW-450x253.jpg 450w,
-			wp-content/uploads/dolce-gabbana-and-smeg-limited-edition-fridge-launch-party-in-milan-Landscape-NEW-560x315.jpg 560w,
-			wp-content/uploads/dolce-gabbana-and-smeg-limited-edition-fridge-launch-party-in-milan-Landscape-NEW-800x450.jpg 800w,
-			wp-content/uploads/dolce-gabbana-and-smeg-limited-edition-fridge-launch-party-in-milan-Landscape-NEW-1020x574.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
-
-						</div>
-					</a>
-					<div class="module-content">
-						<header class="module-header">
-							<a
-								href="discover/dolce-and-gabbana-and-smeg-limited-edition-fridge-launch-party-in-milan/"><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">Sicilian
-									design is celebrated in Milan</h2> <span
-								class="global-subtitle global-subtitle--h2">DOLCE&GABBANA
-									AND SMEG FRIGORIFERO D’ARTE’S SICILIAN FESTA</span></a>
-						</header>
-						<article class="module-article">
-							<p class="global-paragraph">In the occasion of the Salone
-								Internazionale del Mobile in Milan, Dolce&Gabbana and Smeg
-								unveil their Frigorifero d’Arte project at the Metropol Theatre
-								amongst Sicilian folk culture and carretti.</p>
-						</article>
-						<a
-							href="discover/dolce-and-gabbana-and-smeg-limited-edition-fridge-launch-party-in-milan/"
-							class="dg-btn dg-btn--black">Discover more</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="container-fluid">
-		<div
-			class="global-module two-block-editorial-module row row-eq-height">
-			<div class="col-md-6 row-eq-height">
-				<div class="module-inner " style="background-color: #e4e4e4">
-					<a
-						href="discover/dolce-gabbana-smeg-fridge-sicilian-artits-biographies/"
-						class="opacity-hover">
-						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\dolce-gabbana-smeg-fridge-sicilian-artits-biographies-landscape-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/dolce-gabbana-smeg-fridge-sicilian-artits-biographies-landscape-450x253.jpg 450w,
-			wp-content/uploads/dolce-gabbana-smeg-fridge-sicilian-artits-biographies-landscape-560x315.jpg 560w,
-			wp-content/uploads/dolce-gabbana-smeg-fridge-sicilian-artits-biographies-landscape-800x450.jpg 800w,
-			wp-content/uploads/dolce-gabbana-smeg-fridge-sicilian-artits-biographies-landscape-1020x574.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
-
-						</div>
-					</a>
-					<div class="module-content">
-						<header class="module-header">
-							<a
-								href="discover/dolce-gabbana-smeg-fridge-sicilian-artits-biographies/"><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">The
-									artisans of Sicily</h2> <span
-								class="global-subtitle global-subtitle--h2">THE MEN AND
-									WOMEN KEEPING AN ANCIENT TRADITION ALIVE</span></a>
-						</header>
-						<article class="module-article">
-							<p class="global-paragraph">Meet the men and women who keep
-								alive the ancient tradition of Sicilian handicrafts and who lent
-								their art to the Dolce&Gabbana and Smeg collaboration.</p>
-						</article>
-						<a
-							href="discover/dolce-gabbana-smeg-fridge-sicilian-artits-biographies/"
-							class="dg-btn dg-btn--black">Discover More</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 row-eq-height">
-				<div class="module-inner " style="background-color: #e4e4e4">
-					<a
-						href="discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/"
-						class="opacity-hover">
-						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\the-carretto-siciliano-in-the-history-of-dolce-gabbana-landscape1-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/the-carretto-siciliano-in-the-history-of-dolce-gabbana-landscape1-450x253.jpg 450w,
-			wp-content/uploads/the-carretto-siciliano-in-the-history-of-dolce-gabbana-landscape1-560x315.jpg 560w,
-			wp-content/uploads/the-carretto-siciliano-in-the-history-of-dolce-gabbana-landscape1-800x450.jpg 800w,
-			wp-content/uploads/the-carretto-siciliano-in-the-history-of-dolce-gabbana-landscape1.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
-
-						</div>
-					</a>
-					<div class="module-content">
-						<header class="module-header">
-							<a
-								href="discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/"><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">Carretto
-									Siciliano</h2> <span class="global-subtitle global-subtitle--h2">A
-									TIMELESS FOLK INSPIRATION</span></a>
-						</header>
-						<article class="module-article">
-							<p class="global-paragraph">The Sicilian horse drawn cart
-								with its craftsmanship, literary heritage, timeless appeal, and
-								colourful patterns has been a point of reference for
-								Dolce&Gabbana since the beginning.</p>
-						</article>
-						<a
-							href="discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/"
-							class="dg-btn dg-btn--black">Read more</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="container-fluid container-fluid--double-gutter">
-		<div class="push-collection-module global-module row"
-			style="background-color:">
-			<div
-				class="col-md-8 col-sm-12 global--no-gutter global--vcenter module-image">
-				<a
-					href="discover/dolce-and-gabbana-summer-2016-menswear-printed-t-shirts/"
-					class="opacity-hover">
-					<div class="global-image-wrapper">
-						<img class="global-lazy-thumbnail-image"
-							src="\company\wp-content\uploads\dolce-and-gabbana-summer-2016-menswear-printed-t-shirts-Landscape-banner-new-320x180.jpg"
-							data-lazy-srcset="/wp-content/uploads/dolce-and-gabbana-summer-2016-menswear-printed-t-shirts-Landscape-banner-new-450x253.jpg 450w,
-				wp-content/uploads/dolce-and-gabbana-summer-2016-menswear-printed-t-shirts-Landscape-banner-new-560x315.jpg 560w,
-				wp-content/uploads/dolce-and-gabbana-summer-2016-menswear-printed-t-shirts-Landscape-banner-new-800x450.jpg 800w,
-				wp-content/uploads/dolce-and-gabbana-summer-2016-menswear-printed-t-shirts-Landscape-banner-new-1020x574.jpg 1020w,
-				wp-content/uploads/dolce-and-gabbana-summer-2016-menswear-printed-t-shirts-Landscape-banner-new-1440x810.jpg 1440w"
-							data-lazy-sizes="(max-width: 768px) 100vw, 58vw" data-lazy-alt="">
-
-					</div>
-				</a>
-			</div>
-			<div
-				class="col-md-4 col-sm-12 global--no-gutter global--vcenter module-content">
-				<header class="module-header global-module-header">
-					<a
-						href="discover/dolce-and-gabbana-summer-2016-menswear-printed-t-shirts/"><h2>Summer
-							Time</h2> <span class="global-subtitle global-subtitle--h2">Discover
-							Dolce&Gabbana printed t&#8209;shirts for an ironic, fun and
-							colourful summer look.</span></a>
-				</header>
-				<a
-					href="discover/dolce-and-gabbana-summer-2016-menswear-printed-t-shirts/"
-					class="dg-btn dg-btn--black">Discover More</a>
-			</div>
-		</div>
-	</div>
-	<div class="container-fluid">
-		<div
-			class="global-module two-block-editorial-module row row-eq-height">
-			<div class="col-md-6 row-eq-height">
+	
+	<c:forEach items="${articles}" var="article" varStatus="aStatus">
+		<c:choose>
+   			<c:when test="${aStatus.count % 2 == 1}">  
+   					<div id="mydiv" class="container-fluid">
+				<div
+					class="global-module two-block-editorial-module row row-eq-height">
+					<div class="col-md-6 row-eq-height">
 				<div class="module-inner " style="background-color: #e4e4e4">
 					<a
 						href="discover/dolce-and-gabbana-eyewear-special-edition-hand-made-sicilian-carretto-sunglasses/"
 						class="opacity-hover">
 						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\dolce-and-gabbana-eyewear-special-edition-hand-made-sicilian-carretto-sunglasses-banner-Landscape-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/dolce-and-gabbana-eyewear-special-edition-hand-made-sicilian-carretto-sunglasses-banner-Landscape-450x253.jpg 450w,
-			wp-content/uploads/dolce-and-gabbana-eyewear-special-edition-hand-made-sicilian-carretto-sunglasses-banner-Landscape-560x315.jpg 560w,
-			wp-content/uploads/dolce-and-gabbana-eyewear-special-edition-hand-made-sicilian-carretto-sunglasses-banner-Landscape-800x450.jpg 800w,
-			wp-content/uploads/dolce-and-gabbana-eyewear-special-edition-hand-made-sicilian-carretto-sunglasses-banner-Landscape-1020x574.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
+							<img
+								src="${article.cover }">
 
 						</div>
 					</a>
@@ -709,220 +433,63 @@
 						<header class="module-header">
 							<a
 								href="discover/dolce-and-gabbana-eyewear-special-edition-hand-made-sicilian-carretto-sunglasses/"><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">Carretto
-									Sunglasses</h2> <span class="global-subtitle global-subtitle--h2">A
+									class="global-editorial-module-headline global-editorial-module-headline--small">
+									${article.title }
+									</h2> <span class="global-subtitle global-subtitle--h2">A
 									VERY SPECIAL LIMITED EDITION</span></a>
 						</header>
 						<article class="module-article">
-							<p class="global-paragraph">Handmade and hand painted
-								sunglasses created by master craftsmen from the Sicilian
-								tradition who lend their skills to fashion.</p>
+							<p class="global-paragraph">${article.seoDescription }</p>
+						</article>
+						<a
+							href="/zhushunshan"
+							class="dg-btn dg-btn--black">详情</a>
+					</div>
+				</div>
+			</div>
+   			</c:when>
+   			<c:otherwise> 
+   				<div class="col-md-6 row-eq-height">
+				<div class="module-inner " style="background-color: #e4e4e4">
+					<a
+						href="discover/dolce-and-gabbana-eyewear-special-edition-hand-made-sicilian-carretto-sunglasses/"
+						class="opacity-hover">
+						<div class="global-image-wrapper">
+							<img 
+								src="${article.cover }"
+								/>
+
+						</div>
+					</a>
+					<div class="module-content">
+						<header class="module-header">
+							<a
+								href="discover/dolce-and-gabbana-eyewear-special-edition-hand-made-sicilian-carretto-sunglasses/"><h2
+									class="global-editorial-module-headline global-editorial-module-headline--small">
+									${article.title }
+									</h2> <span class="global-subtitle global-subtitle--h2">A
+									VERY SPECIAL LIMITED EDITION</span></a>
+						</header>
+						<article class="module-article">
+							<p class="global-paragraph">${article.seoDescription }</p>
 						</article>
 						<a
 							href="discover/dolce-and-gabbana-eyewear-special-edition-hand-made-sicilian-carretto-sunglasses/"
-							class="dg-btn dg-btn--black">Discover More</a>
+							class="dg-btn dg-btn--black">详情</a>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 row-eq-height">
-				<div class="module-inner " style="background-color: #e4e4e4">
-					<a
-						href="discover/dolce-and-gabbana-spring-summer-2016-striped-dresses-and-accessories/"
-						class="opacity-hover">
-						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\Landscape-banner-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/Landscape-banner-450x253.jpg 450w,
-			wp-content/uploads/Landscape-banner-560x315.jpg 560w,
-			wp-content/uploads/Landscape-banner-800x450.jpg 800w,
-			wp-content/uploads/Landscape-banner-1020x574.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
-
-						</div>
-					</a>
-					<div class="module-content">
-						<header class="module-header">
-							<a
-								href="discover/dolce-and-gabbana-spring-summer-2016-striped-dresses-and-accessories/"><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">Graphic
-									Stripes for an Urban Summer</h2> <span
-								class="global-subtitle global-subtitle--h2">INSPIRED BY
-									BEACH UMBRELLAS BUT AT HOME IN THE CITY</span></a>
-						</header>
-						<article class="module-article">
-							<p class="global-paragraph">Stripes adorn 60s and 70s
-								silhouettes for an urban summer look for the contemporary woman.</p>
-						</article>
-						<a
-							href="discover/dolce-and-gabbana-spring-summer-2016-striped-dresses-and-accessories/"
-							class="dg-btn dg-btn--black">Read More</a>
-					</div>
+   			</c:otherwise>
+		</c:choose>
+		
+		<c:if test="${fn:length(articles)== aStatus.count || aStatus.count != 1 }">
 				</div>
 			</div>
-		</div>
-	</div>
-
-
-	<div class="container-fluid">
-		<div
-			class="global-module two-block-editorial-module row row-eq-height">
-			<div class="col-md-6 row-eq-height">
-				<div class="module-inner module-inner--no-background-color"
-					style="background-color: #ffffff">
-					<a
-						href="http://www.dolcegabbana.com/beauty/makeup/eyes-products/passioneyes-waterproof-mascara/"
-						class="opacity-hover" target='_blank'>
-						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\dolce-and-gabbana-passioneyes-waterproof-mascara-makeup-ad-campaign-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/dolce-and-gabbana-passioneyes-waterproof-mascara-makeup-ad-campaign-450x253.jpg 450w,
-			wp-content/uploads/dolce-and-gabbana-passioneyes-waterproof-mascara-makeup-ad-campaign-560x315.jpg 560w,
-			wp-content/uploads/dolce-and-gabbana-passioneyes-waterproof-mascara-makeup-ad-campaign-800x450.jpg 800w,
-			wp-content/uploads/dolce-and-gabbana-passioneyes-waterproof-mascara-makeup-ad-campaign-1020x574.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
-
-						</div>
-					</a>
-					<div class="module-content">
-						<header class="module-header">
-							<a
-								href="http://www.dolcegabbana.com/beauty/makeup/eyes-products/passioneyes-waterproof-mascara/"
-								target='_blank'><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">Passioneyes
-									Waterproof Mascara</h2> <span
-								class="global-subtitle global-subtitle--h2"></span></a>
-						</header>
-						<article class="module-article">
-							<p class="global-paragraph">Waterproof duo mascara curl and
-								volume, resistant to water, tears and humidity.</p>
-						</article>
-						<a
-							href="http://www.dolcegabbana.com/beauty/makeup/eyes-products/passioneyes-waterproof-mascara/"
-							target='_blank' class="dg-btn dg-btn--black">Discover more</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 row-eq-height">
-				<div class="module-inner module-inner--no-background-color"
-					style="background-color: #ffffff">
-					<a href="http://www.dolcegabbana.com/beauty/perfumes/men/intenso/"
-						class="opacity-hover" target='_blank'>
-						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\dolce-and-gabbana-colin-farrell-intenso-parfum-men-ad-campaign-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/dolce-and-gabbana-colin-farrell-intenso-parfum-men-ad-campaign-450x253.jpg 450w,
-			wp-content/uploads/dolce-and-gabbana-colin-farrell-intenso-parfum-men-ad-campaign-560x315.jpg 560w,
-			wp-content/uploads/dolce-and-gabbana-colin-farrell-intenso-parfum-men-ad-campaign-800x450.jpg 800w,
-			wp-content/uploads/dolce-and-gabbana-colin-farrell-intenso-parfum-men-ad-campaign-1020x574.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
-
-						</div>
-					</a>
-					<div class="module-content">
-						<header class="module-header">
-							<a
-								href="http://www.dolcegabbana.com/beauty/perfumes/men/intenso/"
-								target='_blank'><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">Intenso</h2>
-								<span class="global-subtitle global-subtitle--h2"></span></a>
-						</header>
-						<article class="module-article">
-							<p class="global-paragraph">A woody, aromatic and intense
-								fragrance that represents the intensity of the Dolce&Gabbana
-								man.</p>
-						</article>
-						<a href="http://www.dolcegabbana.com/beauty/perfumes/men/intenso/"
-							target='_blank' class="dg-btn dg-btn--black">Find out more</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="container-fluid">
-		<div
-			class="global-module two-block-editorial-module row row-eq-height">
-			<div class="col-md-6 row-eq-height">
-				<div class="module-inner " style="background-color: #e4e4e4">
-					<a
-						href="discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/"
-						class="opacity-hover">
-						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection-landscape-banner-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection-landscape-banner-450x253.jpg 450w,
-			wp-content/uploads/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection-landscape-banner-560x315.jpg 560w,
-			wp-content/uploads/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection-landscape-banner-800x450.jpg 800w,
-			wp-content/uploads/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection-landscape-banner-1020x574.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
-
-						</div>
-					</a>
-					<div class="module-content">
-						<header class="module-header">
-							<a
-								href="discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/"><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">Summer
-									2016: #Italiaislove</h2> <span
-								class="global-subtitle global-subtitle--h2">FROM AMALFI
-									TO THE COLOSSEUM, ITALY IS IN FASHION</span></a>
-						</header>
-						<article class="module-article">
-							<p class="global-paragraph">Dolce&Gabbana draw inspiration
-								from the jewels of Italy in the Summer 2016 fashion show
-								collection.</p>
-						</article>
-						<a
-							href="discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/"
-							class="dg-btn dg-btn--black">Read More</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 row-eq-height">
-				<div class="module-inner " style="background-color: #e4e4e4">
-					<a
-						href="discover/dolce-and-gabbana-children-collection-italia-is-love-for-new-born-girls/"
-						class="opacity-hover">
-						<div class="global-image-wrapper">
-							<img class="global-lazy-thumbnail-image"
-								src="\company\wp-content\uploads\dolce-and-gabbana-children-collection-italia-is-love-for-new-born-girls-Landscape-banner-320x180.jpg"
-								data-lazy-srcset="/wp-content/uploads/dolce-and-gabbana-children-collection-italia-is-love-for-new-born-girls-Landscape-banner-450x253.jpg 450w,
-			wp-content/uploads/dolce-and-gabbana-children-collection-italia-is-love-for-new-born-girls-Landscape-banner-560x315.jpg 560w,
-			wp-content/uploads/dolce-and-gabbana-children-collection-italia-is-love-for-new-born-girls-Landscape-banner-800x450.jpg 800w,
-			wp-content/uploads/dolce-and-gabbana-children-collection-italia-is-love-for-new-born-girls-Landscape-banner-1020x574.jpg 1020w"
-								data-lazy-sizes="(max-width: 768px) 100vw, 40vw"
-								data-lazy-alt="">
-
-						</div>
-					</a>
-					<div class="module-content">
-						<header class="module-header">
-							<a
-								href="discover/dolce-and-gabbana-children-collection-italia-is-love-for-new-born-girls/"><h2
-									class="global-editorial-module-headline global-editorial-module-headline--small">Italia
-									is Love: Mini me</h2> <span
-								class="global-subtitle global-subtitle--h2">LITTLE GIRL
-									LOOKS INSPIRED BY THE SUMMER 2016 FASHION SHOW</span></a>
-						</header>
-						<article class="module-article">
-							<p class="global-paragraph">Adorable dresses and bodysuits
-								for baby girls are printed with the motifs of the Summer 2016
-								womenswear fashion show collection for a stylish and fun mommy
-								and me look.</p>
-						</article>
-						<a
-							href="discover/dolce-and-gabbana-children-collection-italia-is-love-for-new-born-girls/"
-							class="dg-btn dg-btn--black">Discover More</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+		
+		</c:if>
+		
+	</c:forEach>
+	
 
 	<!-- .content-area -->
 
