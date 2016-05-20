@@ -72,9 +72,6 @@
 
 <script
 	src="\company\wp-content\themes\dolcegabbana\js\picturefill.min.js"></script>
-	
-	<script
-	src="/js/jquery.min.js"></script>
 
 <script>
     dataLayer = [{
@@ -141,9 +138,6 @@
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-    
-    
-    
     </script>
 
 	<div class="content-area startpage ">
@@ -152,7 +146,7 @@
 		<input type="hidden" id="check-for-fashion-show" value="no">
 		<div class="container-fluid container-fluid--full">
 			<div
-				class="hero-module  hero-module--menu-offset hero-module--no-subtitle"
+				class="hero-module  hero-module--menu-offset hero-module--no-subtitle" style="margin-bottom: 10px;"
 				data-mediatype="image">
 				<input type="hidden" value="en" id="languageCode"> <a
 					href="fashion-show-stream\dynamic-jw-module.htm"></a> <a
@@ -164,7 +158,7 @@
 					href="fashion-show-stream\dynamic-module-post_it.htm"></a>
 				<div id="dynamic-content-container"></div>
 
-				<a href="woman/" class="block-link opacity-hover">
+					<a href="woman/" class="block-link opacity-hover">
 					<div class="module-media-container">
 						<div class="global-image-wrapper module-image module-media"
 							data-width="1920" data-height="800">
@@ -186,7 +180,8 @@
 							<ul class="menu-item-list">
 								
 								
-
+								
+								
 								<c:forEach items="${navigations}" var="item">
 
 									<li class="menu-item">
@@ -300,6 +295,11 @@
 										</c:if></li>
 
 								</c:forEach>
+								
+								
+								
+
+							
 
 								<li class="menu-item menu-item--language-selector"><a
 									class="menu-item-anchor" href="#"> English <span
@@ -318,6 +318,7 @@
 									</div></li>
 							</ul>
 						</div>
+						
 						<div class="menu-item-list-overlay"></div>
 						<div class="menu-language-selector dropdown-component">
 							<div class="btn-group component-btn-group">
@@ -337,6 +338,89 @@
 			</div>
 		</div>
 	</div>
+
+	
+
+		<div class="container-fluid">
+		<div class="headline-component">
+	            <h1>${navigation.name }</h1>
+	            <h4 class="global-subtitle global-subtitle--h1">From Amalfi to the Colosseum, Italy is in fashion</h4>	      
+	    </div>
+	
+	</div>
+	
+	
+	
+	<div class="container-fluid container-fluid--double-gutter" style="padding-left: 10px;padding-right: 10px">
+		<div class="breadcrumb-component">
+			<nav class="breadcrumb-nav">
+				<ul class="breadcrumb-item-list">
+					<li class="breadcrumb-item"><a href="/company/index.html">首页</a>
+					</li>
+					<c:if test="${parent != null }">
+						<li class="breadcrumb-item"><a href="/company/navigation/${parent.id}/list.html">
+							${parent.name } </a></li>
+					</c:if>
+					<c:if test="${child != null }">
+						<li class="breadcrumb-item"><a href="/company/navigation/${child.id}/list.html">
+							${child.name } </a></li>
+					</c:if>
+
+					<!-- 
+					
+					<li class="breadcrumb-item breadcrumb-item--current-page">
+						${article.title }</li>
+					
+					 -->
+				</ul>
+			</nav>
+
+
+			<div class="share-component">
+				<button type="button"
+					class="share-button icon-share-2 js-share-button"
+					data-original-title="" title=""></button>
+				<div class="js-share-content" style="display: none" role="tooltip">
+					<header class="hidden-md hidden-lg hidden-xl">
+						<a class="js-close-share-popover icon-thin-close"
+							data-dismiss="popover"></a>
+					</header>
+					<ul>
+						<li class="component-share-fb"><a
+							data-trackingdata="{'event': 'social', 'socialNetwork': 'facebook', 'socialAction': 'share', 'socialTarget': 'https://www.facebook.com/dialog/share?app_id=1118370288207526&amp;display=popup&amp;href=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/&amp;redirect_uri=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/'}"
+							class="event-tracking-trigger" target="_blank"
+							href="https://www.facebook.com/dialog/share?app_id=995107573893872&amp;display=popup&amp;href=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/&amp;redirect_uri=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/"><span
+								class="icon-share_facebook"></span>Share on Facebook</a></li>
+						<li class="component-share-twitter"><a
+							data-trackingdata="{'event': 'social', 'socialNetwork': 'twitter', 'socialAction': 'tweet', 'socialTarget': 'http://twitter.com/share?text=Read%20Summer%202016%3A%20%23Italiaislove%20and%20get%20inspired%20by%20Dolce%20%26%20Gabbana%20Luxury%20Magazine%20suggestions.&amp;url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/'}"
+							class="event-tracking-trigger" target="_blank"
+							href="http://twitter.com/share?text=Read%20Summer%202016%3A%20%23Italiaislove%20and%20get%20inspired%20by%20Dolce%20%26%20Gabbana%20Luxury%20Magazine%20suggestions.&amp;url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/"><span
+								class="icon-share_twitter"></span>Tweet this</a></li>
+						<li class="component-share-gp"><a
+							data-trackingdata="{'event': 'social', 'socialNetwork': 'googleplus', 'socialAction': 'share', 'socialTarget': 'https://plus.google.com/share?url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/'}"
+							class="event-tracking-trigger" target="_blank"
+							href="https://plus.google.com/share?url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/"><span
+								class="icon-share_googleplus"></span>Share on Google+</a></li>
+						<li class="component-share-pinterest"><a
+							data-trackingdata="{'event': 'social','socialNetwork': 'pinterest','socialAction': 'pin','socialTarget': 'https://www.pinterest.com/pin/create/bookmarklet/?media=http://dev16.dolceandgabbana.com/wp-content/uploads/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection-square-banner-800x800.jpg&amp;url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/&amp;is_video=false&amp;description=Read%20Summer%202016%3A%20%23Italiaislove%20and%20get%20inspired%20by%20Dolce%20%26%20Gabbana%20Luxury%20Magazine%20suggestions.'}"
+							class="event-tracking-trigger" target="_blank"
+							href="https://www.pinterest.com/pin/create/bookmarklet/?media=http://dev16.dolceandgabbana.com/wp-content/uploads/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection-square-banner-800x800.jpg&amp;url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/&amp;is_video=false&amp;description=Read%20Summer%202016%3A%20%23Italiaislove%20and%20get%20inspired%20by%20Dolce%20%26%20Gabbana%20Luxury%20Magazine%20suggestions."><span
+								class="icon-share_pinterest"></span>Pin this image</a></li>
+						<li class="component-share-mail"><a
+							href="mailto:?subject=Summer 2016: #Italiaislove&amp;body=Read%20Summer%202016%3A%20%23Italiaislove%20and%20get%20inspired%20by%20Dolce%20%26%20Gabbana%20Luxury%20Magazine%20suggestions.http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/"><span
+								class="icon-share_email"></span>Email this to a friend</a></li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid container-fluid--double-gutter"  style="padding-left: 10px;padding-right: 10px;">
+    <div class="divider-module global-module divider-module--no-title"  style="margin-bottom: 10px;">
+        <span></span>
+    </div>
+</div>
 	
 	<c:forEach items="${articles}" var="article" varStatus="aStatus">
 		<c:choose>
@@ -416,80 +500,19 @@
 		
 	</c:forEach>
 	
+	
+	
 
 	<!-- .content-area -->
+	
 
 	<!-- Modal -->
-	<div class="modal image-detail-view global"
-		id="image-detail-view-modal" aria-labelledby="myModalLabel">
-		<div class="modal-dialog component-dialog" role="document">
-			<div class="modal-content component-content">
-				<div class="modal-body component-body"></div>
-			</div>
-		</div>
-	</div>
-	<div class="modal-fixed-content image-detail-view-fixed-content">
-		<div class="component-overlay-gradient"></div>
-		<img class="component-dg-logo global--noselect"
-			src="wp-content/themes/dolcegabbana/images/DG-logo-white.svg"
-			onerror="this.src='/wp-content/themes/dolcegabbana/images/DG-logo-white.png'; this.onerror=null;">
-		<a href="#" type="button"
-			class="close icon-close component-close-button" data-dismiss="modal"
-			aria-label="Close"></a> <a
-			class="component-arrow-btn component-arrow-btn--left"></a> <a
-			class="component-arrow-btn component-arrow-btn--right"></a>
+	
 
-		<div class="share-component">
-			<button type="button"
-				class="share-button icon-share-2 js-share-button"></button>
-			<div class="js-share-content" style="display: none" class="popover"
-				role="tooltip">
-				<header class="hidden-md hidden-lg hidden-xl">
-					<a class="js-close-share-popover icon-thin-close"
-						data-dismiss="popover"></a>
-				</header>
-				<ul>
-					<li class="component-share-fb"><a
-						data-trackingdata="{'event': 'social', 'socialNetwork': 'facebook', 'socialAction': 'share', 'socialTarget': 'https://www.facebook.com/dialog/share?app_id=1118370288207526&display=popup&href=&redirect_uri='}"
-						class="event-tracking-trigger" target="_blank"
-						href="https://www.facebook.com/dialog/share?app_id=995107573893872&display=popup&href=&redirect_uri="><span
-							class="icon-share_facebook"></span>Share on Facebook</a></li>
-					<li class="component-share-twitter"><a
-						data-trackingdata="{'event': 'social', 'socialNetwork': 'twitter', 'socialAction': 'tweet', 'socialTarget': 'http://twitter.com/share?text=Dolce%26amp%3BGabbana%20presents%20The%20Summer%202016%20Collections%3A%20Online%20store%2C%20Menswear%2C%20Womenswear%2C%20Childrenswear%2C%20Eyewear%2C%20Watches%2C%20Jewellery%2C%20Bags%2C%20Perfumes%2C%20Make-up%20and%20more.&url='}"
-						class="event-tracking-trigger" target="_blank"
-						href="http://twitter.com/share?text=Dolce%26amp%3BGabbana%20presents%20The%20Summer%202016%20Collections%3A%20Online%20store%2C%20Menswear%2C%20Womenswear%2C%20Childrenswear%2C%20Eyewear%2C%20Watches%2C%20Jewellery%2C%20Bags%2C%20Perfumes%2C%20Make-up%20and%20more.&url="><span
-							class="icon-share_twitter"></span>Tweet this</a></li>
-					<li class="component-share-gp"><a
-						data-trackingdata="{'event': 'social', 'socialNetwork': 'googleplus', 'socialAction': 'share', 'socialTarget': 'https://plus.google.com/share?url='}"
-						class="event-tracking-trigger" target="_blank"
-						href="https://plus.google.com/share?url="><span
-							class="icon-share_googleplus"></span>Share on Google+</a></li>
-					<li class="component-share-pinterest"><a
-						data-trackingdata="{'event': 'social','socialNetwork': 'pinterest','socialAction': 'pin','socialTarget': 'https://www.pinterest.com/pin/create/bookmarklet/?media=wp-content/uploads/dolce-and-gabbana-summer-2016-women-advertising-campaign-042-800x333.jpg&url=&is_video=false&description=Dolce%26amp%3BGabbana%20presents%20The%20Summer%202016%20Collections%3A%20Online%20store%2C%20Menswear%2C%20Womenswear%2C%20Childrenswear%2C%20Eyewear%2C%20Watches%2C%20Jewellery%2C%20Bags%2C%20Perfumes%2C%20Make-up%20and%20more.'}"
-						class="event-tracking-trigger" target="_blank"
-						href="https://www.pinterest.com/pin/create/bookmarklet/?media=wp-content/uploads/dolce-and-gabbana-summer-2016-women-advertising-campaign-042-800x333.jpg&url=&is_video=false&description=Dolce%26amp%3BGabbana%20presents%20The%20Summer%202016%20Collections%3A%20Online%20store%2C%20Menswear%2C%20Womenswear%2C%20Childrenswear%2C%20Eyewear%2C%20Watches%2C%20Jewellery%2C%20Bags%2C%20Perfumes%2C%20Make-up%20and%20more."><span
-							class="icon-share_pinterest"></span>Pin this image</a></li>
-					<li class="component-share-mail"><a
-						href="mailto:?subject=Startpage&body=Dolce%26amp%3BGabbana%20presents%20The%20Summer%202016%20Collections%3A%20Online%20store%2C%20Menswear%2C%20Womenswear%2C%20Childrenswear%2C%20Eyewear%2C%20Watches%2C%20Jewellery%2C%20Bags%2C%20Perfumes%2C%20Make-up%20and%20more."><span
-							class="icon-share_email"></span>Email this to a friend</a></li>
-
-				</ul>
-			</div>
-		</div>
-		<div
-			class="component-overlay-gradient component-overlay-gradient--bottom"></div>
-		<div class="component-overlay-loader"></div>
-		<div class="image-detail-info-component">
-			<div class="component-info-container"></div>
-			<button type="button" class="icon-info component-button"></button>
-		</div>
-		<div class="image-detail-index-indicator"></div>
-	</div>
-
-	<div class="container-fluid container-fluid--double-gutter">
+	<div class="container-fluid container-fluid--double-gutter"  style="padding-left: 10px;padding-right: 10px">
 
 		<a href="#"
-			class="global-back-to-top-btn scroll-to-helper icon-arrow_up"><span>BACK
+			class="global-back-to-top-btn scroll-to-helper icon-arrow_up" style="padding-bottom: 0px;"><span>BACK
 				TO TOP</span></a>
 
 		<footer>
@@ -657,8 +680,8 @@
 
 	<script src="\company\wp-content\themes\dolcegabbana\js\oldbrowser.js"></script>
 	<script src="\company\wp-content\themes\dolcegabbana\js\build.js"></script>
-	
-	
+	<script
+	src="/js/jquery.min.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
 			var wHeight = $(window).height();
@@ -669,9 +692,6 @@
 		
 	
 	</script>
-	
-	
-	
 </body>
 
 <!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/

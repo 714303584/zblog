@@ -110,7 +110,7 @@
 							<label for="inputPassword3" class="col-sm-2 control-label">链接：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="url" name="url"
-									style="width: 200px" required>
+									style="width: 200px" >
 							</div>
 						</div>
 
@@ -118,7 +118,7 @@
 							<label for="inputPassword3" class="col-sm-2 control-label">排序：</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="orders"
-									name="orders" style="width: 200px" required>
+									name="orders" style="width: 200px" >
 							</div>
 						</div>
 

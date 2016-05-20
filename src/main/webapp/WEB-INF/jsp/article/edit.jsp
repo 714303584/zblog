@@ -267,7 +267,7 @@
 				$("#parentname").val(parentname);
 			});
 			
-			$("#articleCategory").val(${navigation.id});
+			$("#articleCategory").val(${article.articleCategory});
 			
 			
 		});
