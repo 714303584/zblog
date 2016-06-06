@@ -100,6 +100,7 @@
 								<select id="parent" name="parent" class="form-control"
 									style="width: 200px">
 									<option value="0">top</option>
+									<option value="-1">bot</option>
 									<c:forEach var="navigation" items="${navigations}">
 										<option value="${navigation.id}">${navigation.name }</option>
 									</c:forEach>

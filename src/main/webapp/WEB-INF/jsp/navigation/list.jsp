@@ -68,7 +68,7 @@
 					</thead>
 					<tbody id="table_body" style="padding: 0px;">
 
-						<c:forEach var="navigation" items="${navigations}">
+						<c:forEach var="navigation" items="${pages.elements}">
 							<tr>
 								<td><input type="checkbox"name="post[]" value="${navigation.id}">${navigation.id}</td>
 								<td>${navigation.name }</td>
@@ -99,15 +99,16 @@
 
 	</div>
 	<div id="div_table_page" class="panel canelMargin" style="border: 0px">
-		<div class="panel-body canelPadding">
+		<div class="panel-body canelPadding" >
 			<ul class="pagination pagination-sm canelMargin canelPadding">
-				<li><a href="#">上一页</a></li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">下一页</a></li>
+			
+				<li><a href="/admin/navigation/list.html?page=1">第一页</a></li>
+			
+				<c:forEach var="item" varStatus="status" begin="1" end="${pages.pageCount}">
+					<li><a href="/admin/navigation/list.html?page=${item}"> ${item}</a> </li>
+				</c:forEach>
+				
+				<li><a href="/admin/navigation/list.html?page=${pages.pageCount }">下一页</a></li>
 			</ul>
 		</div>
 	</div>
