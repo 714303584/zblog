@@ -87,5 +87,7 @@ public interface IPage<T> {
 		* @return 当前页的页号 
 		*/ 
 		int getPageNo();
+		
+		void setPageNo(int pageNo);
 
 	}
