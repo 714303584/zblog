@@ -12,9 +12,13 @@ public interface NavigationDaoImpl {
 	
 	public List<Navigation> findListBy(Map<String, Object> map);
 	
+	public List<Navigation> findPageBy(Map<String, Object> map);
+	
 	public void deleteByIds(long[] ids);
 	
 	public void update(Navigation entity);
+	
+	public int getCountBy(Map<String, Object> map);
 
 }
 	
