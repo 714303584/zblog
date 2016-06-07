@@ -172,7 +172,7 @@
 					<div class="menu-inner-wrapper">
 						<button type="button" class="menu-mobile-trigger"></button>
 						<div class="menu-logo-wrapper">
-							<a href="index.htm" class="global--block"><img
+							<a href="/company/index.htm" class="global--block"><img
 								class="menu-logo"
 								src="\company\wp-content\themes\dolcegabbana\images\menu-logo.png"></a>
 						</div>
@@ -232,6 +232,8 @@
 															
 
 														</ul>
+														<!-- 
+														
 														<div class="menu-item-content-general">
 															<ul class="menu-item-content-list">
 																<li><a
@@ -242,6 +244,8 @@
 																	target="_blank">Newsletter</a></li>
 															</ul>
 														</div>
+														
+														 -->
 													</div>
 
 
@@ -344,7 +348,6 @@
 		<div class="container-fluid">
 		<div class="headline-component">
 	            <h1>${navigation.name }</h1>
-	            <h4 class="global-subtitle global-subtitle--h1">From Amalfi to the Colosseum, Italy is in fashion</h4>	      
 	    </div>
 	
 	</div>
@@ -499,15 +502,6 @@
 		</c:if>
 		
 	</c:forEach>
-	
-	
-	
-
-	<!-- .content-area -->
-	
-
-	<!-- Modal -->
-	
 
 	<div class="container-fluid container-fluid--double-gutter"  style="padding-left: 10px;padding-right: 10px">
 
@@ -519,28 +513,11 @@
 			<nav class="container-fluid footer-nav">
 				<ul class="footer-nav-list">
 
-					<li><a target="_blank" href="http://store.dolcegabbana.com">ONLINE
-							STORE</a></li>
-					<li><a target="_blank"
-						href="https://login.dolcegabbana.com/Default.aspx">NEWSLETTER</a>
-					</li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/corporate/">CORPORATE</a></li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/Privacy/">PRIVACY</a></li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/cookie-policy-en/">COOKIE
-							POLICY</a></li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/Disclaimer/">DISCLAIMER</a></li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/sitemap/">SITEMAP</a></li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/martini/">BAR MARTINI &reg;</a>
-					</li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/store-locator/">STORE
-							LOCATOR</a></li>
+						<c:forEach items="${bottoms}" var="item">
+				
+					<li><a target="_blank" href="${item.url}">${item.name }</a></li>
+				
+				</c:forEach>
 				</ul>
 				<div class="footer-language-selector dropdown-component">
 					<div class="btn-group component-btn-group">

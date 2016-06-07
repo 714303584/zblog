@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
 	pageEncoding="utf8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lte-ie9 lt-ie8 lt-ie7 lte-ie10"> <![endif]-->
@@ -29,7 +29,7 @@
 
 
 <!-- Open Graph data -->
-<meta property="og:title" content="Startpage">
+<meta property="og:title" content="Carretto Siciliano">
 <meta property="og:site_name" content="Dolce & Gabbana">
 <meta property="og:description"
 	content="Dolce&amp;Gabbana presents The Summer 2016 Collections: Online store, Menswear, Womenswear, Childrenswear, Eyewear, Watches, Jewellery, Bags, Perfumes, Make-up and more.">
@@ -37,9 +37,9 @@
 <meta property="og:image"
 	content="/wp-content/uploads/dolce-and-gabbana-summer-2016-women-advertising-campaign-042-800x333.jpg">
 <meta property="og:image:type" content="">
-
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="fb:app_id" content="995107573893872">
+
 
 <!-- Our Styles -->
 <link rel="stylesheet"
@@ -75,8 +75,8 @@
 
 <script>
     dataLayer = [{
-    'pageTitle': 'Startpage', // page title
-    'pageCategory': 'page', // page category
+    'pageTitle': 'Carretto Siciliano', // page title
+    'pageCategory': 'article', // page category
     'pageLanguage': 'en', // page language (it, es, de, etc.)
     'page404': 'false'
     }];
@@ -146,8 +146,8 @@
 		<input type="hidden" id="check-for-fashion-show" value="no">
 		<div class="container-fluid container-fluid--full">
 			<div
-				class="hero-module  hero-module--menu-offset hero-module--no-subtitle" style="margin-bottom: 10px;"
-				data-mediatype="image">
+				class="hero-module  hero-module--menu-offset hero-module--no-subtitle"
+				style="margin-bottom: 10px;" data-mediatype="image">
 				<input type="hidden" value="en" id="languageCode"> <a
 					href="fashion-show-stream\dynamic-jw-module.htm"></a> <a
 					href="fashion-show-stream\dynamic-module-countdown.htm"></a> <a
@@ -158,13 +158,11 @@
 					href="fashion-show-stream\dynamic-module-post_it.htm"></a>
 				<div id="dynamic-content-container"></div>
 
-					<a href="woman/" class="block-link opacity-hover">
+				<a href="woman/" class="block-link opacity-hover">
 					<div class="module-media-container">
 						<div class="global-image-wrapper module-image module-media"
 							data-width="1920" data-height="800">
-							<img
-								src="/img/1.jpg"  id="topImage"
-								 >
+							<img src="/img/1.jpg" id="topImage">
 						</div>
 					</div>
 				</a>
@@ -172,37 +170,33 @@
 					<div class="menu-inner-wrapper">
 						<button type="button" class="menu-mobile-trigger"></button>
 						<div class="menu-logo-wrapper">
-							<a href="index.htm" class="global--block"><img
+							<a href="/company/index.htm" class="global--block"><img
 								class="menu-logo"
 								src="\company\wp-content\themes\dolcegabbana\images\menu-logo.png"></a>
 						</div>
 						<div class="menu-item-list-wrapper">
 							<ul class="menu-item-list">
-								
-								
-								
-								
+
+
+
+
 								<c:forEach items="${navigations}" var="item">
 
-									<li class="menu-item">
-									
-									<c:choose>
-										<c:when test="${item.key.url == null || fn:length(item.key.url) == 0}">
-											<a
-											class="menu-item-anchor menu-item-anchor--no-sub"
-											href="/company/navigation/${item.key.id}/list.html"> ${item.key.name} </a> 
-										
-										</c:when>
-										<c:when test="${item.key.url != null}">
-											<a
-											class="menu-item-anchor menu-item-anchor--no-sub"
-											href="${item.key.url}"> ${item.key.name} </a> 
-										
-										</c:when>
-									
-									</c:choose>
-										
-										<c:if test="${item.value != null && !item.value.isEmpty() }">
+									<li class="menu-item"><c:choose>
+											<c:when
+												test="${item.key.url == null || fn:length(item.key.url) == 0}">
+												<a class="menu-item-anchor menu-item-anchor--no-sub"
+													href="/company/navigation/${item.key.id}/list.html">
+													${item.key.name} </a>
+
+											</c:when>
+											<c:when test="${item.key.url != null}">
+												<a class="menu-item-anchor menu-item-anchor--no-sub"
+													href="${item.key.url}"> ${item.key.name} </a>
+
+											</c:when>
+
+										</c:choose> <c:if test="${item.value != null && !item.value.isEmpty() }">
 
 											<div class="menu-item-content-wrapper">
 												<div class="menu-item-content menu-item-content--2-col row">
@@ -211,28 +205,24 @@
 														<ul class="menu-item-content-list">
 
 															<c:forEach items="${item.value}" var="navigat">
-															<li>
-															
-																	<c:choose>
-																		<c:when test="${item.key.url == null || fn:length(item.key.url) == 0 }">
-																			<a
-																			href="/company/navigation/${navigat.id}/list.html"> ${navigat.name} </a> 
-																		
+																<li><c:choose>
+																		<c:when
+																			test="${item.key.url == null || fn:length(item.key.url) == 0 }">
+																			<a href="/company/navigation/${navigat.id}/list.html">
+																				${navigat.name} </a>
+
 																		</c:when>
 																		<c:when test="${item.key.url != null}">
 																			<a href="${navigat.url}">${navigat.name}</a>
-																		
+
 																		</c:when>
-																	
-																	</c:choose>
-															
-															
-															</li>
+
+																	</c:choose></li>
 															</c:forEach>
-															
+
 
 														</ul>
-														<div class="menu-item-content-general">
+														<!-- <div class="menu-item-content-general">
 															<ul class="menu-item-content-list">
 																<li><a
 																	href="http://www.dolcegabbana.com/store-locator/"
@@ -241,7 +231,7 @@
 																	href="https://login.dolcegabbana.com/Default.aspx"
 																	target="_blank">Newsletter</a></li>
 															</ul>
-														</div>
+														</div> -->
 													</div>
 
 
@@ -295,11 +285,11 @@
 										</c:if></li>
 
 								</c:forEach>
-								
-								
-								
 
-							
+
+
+
+
 
 								<li class="menu-item menu-item--language-selector"><a
 									class="menu-item-anchor" href="#"> English <span
@@ -318,7 +308,7 @@
 									</div></li>
 							</ul>
 						</div>
-						
+
 						<div class="menu-item-list-overlay"></div>
 						<div class="menu-language-selector dropdown-component">
 							<div class="btn-group component-btn-group">
@@ -339,17 +329,18 @@
 		</div>
 	</div>
 
-	
+
 
 	<div class="container-fluid">
 		<div class="headline-component">
-	            <h1>${article.title }</h1>
-	            <h4 class="global-subtitle global-subtitle--h1">From Amalfi to the Colosseum, Italy is in fashion</h4>	      
-	    </div>
-	
+			<h1>${article.title }</h1>
+			<h4 class="global-subtitle global-subtitle--h1">${article.seoTitle }</h4>
+		</div>
+
 	</div>
-	
-	<div class="container-fluid container-fluid--double-gutter" style="padding-left: 10px;padding-right: 10px">
+
+	<div class="container-fluid container-fluid--double-gutter"
+		style="padding-left: 10px; padding-right: 10px">
 		<div class="breadcrumb-component">
 			<nav class="breadcrumb-nav">
 				<ul class="breadcrumb-item-list">
@@ -357,11 +348,11 @@
 					</li>
 					<c:if test="${parent != null }">
 						<li class="breadcrumb-item"><a href="/company/na">
-							${parent.name } </a></li>
+								${parent.name } </a></li>
 					</c:if>
 					<c:if test="${child != null }">
 						<li class="breadcrumb-item"><a href="..\index.htm">
-							${child.name } </a></li>
+								${child.name } </a></li>
 					</c:if>
 
 					<li class="breadcrumb-item breadcrumb-item--current-page">
@@ -372,36 +363,36 @@
 
 			<div class="share-component">
 				<button type="button"
-					class="share-button icon-share-2 js-share-button"
-					data-original-title="" title=""></button>
-				<div class="js-share-content" style="display: none" role="tooltip">
+					class="share-button icon-share-2 js-share-button"></button>
+				<div class="js-share-content" style="display: none" class="popover"
+					role="tooltip">
 					<header class="hidden-md hidden-lg hidden-xl">
 						<a class="js-close-share-popover icon-thin-close"
 							data-dismiss="popover"></a>
 					</header>
 					<ul>
 						<li class="component-share-fb"><a
-							data-trackingdata="{'event': 'social', 'socialNetwork': 'facebook', 'socialAction': 'share', 'socialTarget': 'https://www.facebook.com/dialog/share?app_id=1118370288207526&amp;display=popup&amp;href=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/&amp;redirect_uri=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/'}"
+							data-trackingdata="{'event': 'social', 'socialNetwork': 'facebook', 'socialAction': 'share', 'socialTarget': 'https://www.facebook.com/dialog/share?app_id=1118370288207526&display=popup&href=http://dev16.dolceandgabbana.com/discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/&redirect_uri=http://dev16.dolceandgabbana.com/discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/'}"
 							class="event-tracking-trigger" target="_blank"
-							href="https://www.facebook.com/dialog/share?app_id=995107573893872&amp;display=popup&amp;href=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/&amp;redirect_uri=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/"><span
+							href="https://www.facebook.com/dialog/share?app_id=995107573893872&display=popup&href=http://dev16.dolceandgabbana.com/discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/&redirect_uri=http://dev16.dolceandgabbana.com/discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/"><span
 								class="icon-share_facebook"></span>Share on Facebook</a></li>
 						<li class="component-share-twitter"><a
-							data-trackingdata="{'event': 'social', 'socialNetwork': 'twitter', 'socialAction': 'tweet', 'socialTarget': 'http://twitter.com/share?text=Read%20Summer%202016%3A%20%23Italiaislove%20and%20get%20inspired%20by%20Dolce%20%26%20Gabbana%20Luxury%20Magazine%20suggestions.&amp;url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/'}"
+							data-trackingdata="{'event': 'social', 'socialNetwork': 'twitter', 'socialAction': 'tweet', 'socialTarget': 'http://twitter.com/share?text=Read%20about%20the%20carretto%20siciliano%20in%20the%20history%20of%20Dolce%26Gabbana%20in%20the%20branded%20Luxury%20Magazine.&url=http://dev16.dolceandgabbana.com/discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/'}"
 							class="event-tracking-trigger" target="_blank"
-							href="http://twitter.com/share?text=Read%20Summer%202016%3A%20%23Italiaislove%20and%20get%20inspired%20by%20Dolce%20%26%20Gabbana%20Luxury%20Magazine%20suggestions.&amp;url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/"><span
+							href="http://twitter.com/share?text=Read%20about%20the%20carretto%20siciliano%20in%20the%20history%20of%20Dolce%26Gabbana%20in%20the%20branded%20Luxury%20Magazine.&url=http://dev16.dolceandgabbana.com/discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/"><span
 								class="icon-share_twitter"></span>Tweet this</a></li>
 						<li class="component-share-gp"><a
-							data-trackingdata="{'event': 'social', 'socialNetwork': 'googleplus', 'socialAction': 'share', 'socialTarget': 'https://plus.google.com/share?url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/'}"
+							data-trackingdata="{'event': 'social', 'socialNetwork': 'googleplus', 'socialAction': 'share', 'socialTarget': 'https://plus.google.com/share?url=http://dev16.dolceandgabbana.com/discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/'}"
 							class="event-tracking-trigger" target="_blank"
-							href="https://plus.google.com/share?url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/"><span
+							href="https://plus.google.com/share?url=http://dev16.dolceandgabbana.com/discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/"><span
 								class="icon-share_googleplus"></span>Share on Google+</a></li>
 						<li class="component-share-pinterest"><a
-							data-trackingdata="{'event': 'social','socialNetwork': 'pinterest','socialAction': 'pin','socialTarget': 'https://www.pinterest.com/pin/create/bookmarklet/?media=http://dev16.dolceandgabbana.com/wp-content/uploads/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection-square-banner-800x800.jpg&amp;url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/&amp;is_video=false&amp;description=Read%20Summer%202016%3A%20%23Italiaislove%20and%20get%20inspired%20by%20Dolce%20%26%20Gabbana%20Luxury%20Magazine%20suggestions.'}"
+							data-trackingdata="{'event': 'social','socialNetwork': 'pinterest','socialAction': 'pin','socialTarget': 'https://www.pinterest.com/pin/create/bookmarklet/?media=http://dev16.dolceandgabbana.com/wp-content/uploads/the-carretto-siciliano-in-the-history-of-dolce-gabbana-Landing.jpg&url=http://dev16.dolceandgabbana.com/discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/&is_video=false&description=Read%20about%20the%20carretto%20siciliano%20in%20the%20history%20of%20Dolce%26Gabbana%20in%20the%20branded%20Luxury%20Magazine.'}"
 							class="event-tracking-trigger" target="_blank"
-							href="https://www.pinterest.com/pin/create/bookmarklet/?media=http://dev16.dolceandgabbana.com/wp-content/uploads/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection-square-banner-800x800.jpg&amp;url=http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/&amp;is_video=false&amp;description=Read%20Summer%202016%3A%20%23Italiaislove%20and%20get%20inspired%20by%20Dolce%20%26%20Gabbana%20Luxury%20Magazine%20suggestions."><span
+							href="https://www.pinterest.com/pin/create/bookmarklet/?media=http://dev16.dolceandgabbana.com/wp-content/uploads/the-carretto-siciliano-in-the-history-of-dolce-gabbana-Landing.jpg&url=http://dev16.dolceandgabbana.com/discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/&is_video=false&description=Read%20about%20the%20carretto%20siciliano%20in%20the%20history%20of%20Dolce%26Gabbana%20in%20the%20branded%20Luxury%20Magazine."><span
 								class="icon-share_pinterest"></span>Pin this image</a></li>
 						<li class="component-share-mail"><a
-							href="mailto:?subject=Summer 2016: #Italiaislove&amp;body=Read%20Summer%202016%3A%20%23Italiaislove%20and%20get%20inspired%20by%20Dolce%20%26%20Gabbana%20Luxury%20Magazine%20suggestions.http://dev16.dolceandgabbana.com/discover/dolce-and-gabbana-summer-2016-italia-is-love-womensvear-runway-collection/"><span
+							href="mailto:?subject=Carretto Siciliano&body=Read%20about%20the%20carretto%20siciliano%20in%20the%20history%20of%20Dolce%26Gabbana%20in%20the%20branded%20Luxury%20Magazine.http://dev16.dolceandgabbana.com/discover/the-carretto-siciliano-in-the-history-of-dolce-gabbana/"><span
 								class="icon-share_email"></span>Email this to a friend</a></li>
 
 					</ul>
@@ -409,58 +400,42 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="container-fluid container-fluid--double-gutter"  style="padding-left: 10px;padding-right: 10px;">
-    <div class="divider-module global-module divider-module--no-title"  style="margin-bottom: 10px;">
-        <span></span>
-    </div>
-</div>
-	
-	<div id="mydiv" class="container-fluid">
-		${article.content }
-	
+
+	<div class="container-fluid container-fluid--double-gutter"
+		style="padding-left: 10px; padding-right: 10px;">
+		<div class="divider-module global-module divider-module--no-title"
+			style="margin-bottom: 10px;">
+			<span></span>
+		</div>
 	</div>
-	
-	
+
+	<div id="mydiv" class="container-fluid">${article.content }</div>
+
+
 
 	<!-- .content-area -->
-	
+
 
 	<!-- Modal -->
-	
 
-	<div class="container-fluid container-fluid--double-gutter"  style="padding-left: 10px;padding-right: 10px">
+
+	<div class="container-fluid container-fluid--double-gutter"
+		style="padding-left: 10px; padding-right: 10px">
 
 		<a href="#"
-			class="global-back-to-top-btn scroll-to-helper icon-arrow_up" style="padding-bottom: 0px;"><span>BACK
-				TO TOP</span></a>
+			class="global-back-to-top-btn scroll-to-helper icon-arrow_up"
+			style="padding-bottom: 0px;"><span>BACK TO TOP</span></a>
 
 		<footer>
 			<nav class="container-fluid footer-nav">
 				<ul class="footer-nav-list">
 
-					<li><a target="_blank" href="http://store.dolcegabbana.com">ONLINE
-							STORE</a></li>
-					<li><a target="_blank"
-						href="https://login.dolcegabbana.com/Default.aspx">NEWSLETTER</a>
-					</li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/corporate/">CORPORATE</a></li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/Privacy/">PRIVACY</a></li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/cookie-policy-en/">COOKIE
-							POLICY</a></li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/Disclaimer/">DISCLAIMER</a></li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/sitemap/">SITEMAP</a></li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/martini/">BAR MARTINI &reg;</a>
-					</li>
-					<li><a target="_blank"
-						href="http://www.dolcegabbana.com/store-locator/">STORE
-							LOCATOR</a></li>
+					<c:forEach items="${bottoms}" var="item">
+
+						<li><a target="_blank" href="${item.url}">${item.name }</a></li>
+
+					</c:forEach>
+
 				</ul>
 				<div class="footer-language-selector dropdown-component">
 					<div class="btn-group component-btn-group">
@@ -585,7 +560,7 @@
 
 			<div class="footer-legalinfo clearfix">
 				<div>
-					<small>&copy; 2016 Dolce&Gabbana</small>
+					<small>&copy; 2016 Dolce Gabbana</small>
 				</div>
 				<div>
 					<small>VAT NUMBER 09297890155 – SIAE LICENCE N. 637/1/763 –
@@ -599,10 +574,9 @@
 
 
 	<script src="\company\wp-content\themes\dolcegabbana\js\oldbrowser.js"></script>
-	<script src="\company\wp-content\themes\dolcegabbana\js\build.js"></script>
-	<script
-	src="/js/jquery.min.js"></script>
-		<script type="text/javascript">
+	<script src="/company/wp-content/themes/dolcegabbana/js/build.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script type="text/javascript">
 		$(document).ready(function() {
 			var wHeight = $(window).height();
 			var topImageHeight = wHeight * 0.8;
