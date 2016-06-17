@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 实体类,简称 -设置别名 -->
+	<typeAliases>
+		<typeAlias alias="User" type="com.blog.entity.User" />
+		<typeAlias alias="Navigation" type="com.blog.entity.Navigation" />
+		<typeAlias alias="Article" type="com.blog.entity.Article" />
+		<typeAlias alias="Subscriber" type="com.blog.entity.Subscriber" />
+	</typeAliases>
+	<!-- 实体接口映射资源 -->
+	<!-- 说明：如果xxMapper.xml配置文件放在和xxMapper.java统一目录下，mappers也可以省略，因为org.mybatis.spring.mapper.MapperFactoryBean默认会去查找与xxMapper.java相同目录和名称的xxMapper.xml -->
+	<mappers>
+		<mapper resource="com/blog/entity/mapping/UserMapper.xml" />
+		<mapper resource="com/blog/entity/mapping/NavigationMapper.xml" />
+		<mapper resource="com/blog/entity/mapping/ArticleMapper.xml" />
+		<mapper resource="com/blog/entity/mapping/SubscriberMapper.xml" />
+	</mappers>
+
+</configuration>    
