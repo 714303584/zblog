@@ -6,6 +6,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,8 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.blog.dao.ArticleDaoImpl;
 import com.blog.dao.NavigationDaoImpl;
+import com.blog.dao.UserDaoImpl;
 import com.blog.entity.Article;
 import com.blog.entity.Navigation;
+import com.blog.entity.User;
+import com.blog.util.Checker;
 
 
 @Controller("companyIndexController")
@@ -28,6 +34,9 @@ public class IndexController {
 	
 	@Autowired(required = true)
 	ArticleDaoImpl  articleDaoImpl;
+	
+	@Autowired(required = true)
+	UserDaoImpl  userDaoImpl;
 	
 	@RequestMapping(value={"/index"},method={RequestMethod.GET})
 	public String index(ModelMap model){
@@ -46,8 +55,11 @@ public class IndexController {
 				menus.put(navigation, childs);
 		}
 		List<Article> articles = articleDaoImpl.findListBy(null);
+		param.put("parent", -1);
+		List<Navigation> bots = navigationDaoImpl.findListBy(param);
 		model.put("articles", articles);
 		model.put("navigations", menus);
+		model.put("bottoms", bots);
 		return "clients/index";
 	}
 	
@@ -84,6 +96,9 @@ public class IndexController {
 				}
 		}
 		
+		param.put("parent", -1);
+		List<Navigation> bots = navigationDaoImpl.findListBy(param);
+		model.put("bottoms", bots);
 		model.put("parent", arParent);
 		model.put("child", arChild);
 		model.put("article", article);
@@ -135,12 +150,28 @@ public class IndexController {
 		}else{
 			Iterator<Navigation> it2 =  list.iterator();
 			while(it2.hasNext()){
+				
 				Navigation navigation = it2.next();
-				if(navigation.getid() == id)  {
-					arParent = navigation;
+				List<Navigation> childs = menus.get(navigation);
+				
+				Iterator<Navigation> childsIt = childs.iterator();
+				while (childsIt.hasNext()) {
+					Navigation child  = childsIt.next();
+					if(child.getid() == id){
+						arParent = navigation;
+						archild = child;
+						demo = child;
+						break;
+					}
 				}
+				if(arParent != null && archild != null) break;
+				
 			}
 		}
+		
+		param.put("parent", -1);
+		List<Navigation> bots = navigationDaoImpl.findListBy(param);
+		model.put("bottoms", bots);
 		model.put("parent", arParent);
 		model.put("child", archild);
 		model.put("navigation", demo);
@@ -149,7 +180,46 @@ public class IndexController {
 		return "clients/navigation";
 	}
 	
-
+	@RequestMapping(value={"/admin/login"},method={RequestMethod.GET})
+	public String navigationList(ModelMap model){
+		return "login";
+	}
+	
+	@RequestMapping(value={"/admin/login"},method={RequestMethod.POST})
+	public String login(String username,String password, ModelMap model){
+		
+		if(Checker.isEmpty(username) || Checker.isEmpty(password)){
+			
+			model.put("mesage", "登录失败:请检查您的用户名和密码！");
+		}
+		
+		Map<String, Object> map = new HashMap<String,Object>();
+		map.put("username", username);
+		List<User> users = userDaoImpl.findListBy(map);
+		
+		if(users.size() > 0){
+			
+			User user = users.get(0);
+			if(user.getpassword().equals(password)){
+				//从SecurityUtils中取得subject 
+				Subject subject = SecurityUtils.getSubject();
+				//创建Token
+				UsernamePasswordToken token = new UsernamePasswordToken(user.getusername(),user.getpassword());
+				
+				// 使用token登录
+				subject.login(token);
+				return  "redirect:/admin/index.html";
+			}else{
+				model.put("mesage", "登录失败:请检查您的用户名和密码！");
+			}
+			
+		}else{
+			model.put("mesage", "登录失败:请检查您的用户名和密码！");
+		}
+		return "login";
+	}
+	
+	
 	
 	
 	
