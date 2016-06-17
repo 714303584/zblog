@@ -37,8 +37,20 @@
 		</div>
 		<div id="div_table_controller" class="center" style="padding: 4px;">
 			<a class="btn btn-primary btn-xs" href="addUser.html"
-				target="frane_two">添加</a> <a class="btn btn-primary btn-xs">删除</a>
+				target="frane_two">添加</a> <a id="deleteByIds" class="btn btn-primary btn-xs">删除</a>
 		</div>
+		
+		
+		<div style="display: none;">
+			<form id="deleteForm" action="/admin/user/deleteByIds" method="post">
+			
+			
+			</form>
+		</div>
+		
+		
+		
+		
 		<div id="div_table_body" class="panel-body" style="padding: 0px;">
 			<div id="table_databody">
 				<table class="table  table-hover table-condensed b-t text-sm"
@@ -107,12 +119,26 @@
 			
 			$("#invertSelection").click(function () {
 				var checks  = $("#table_body").find("input");
-				
 				$.each(checks,function (){
-					var isChecked =  $(this).attr("selected");
-					$(this).attr("checked",!isChecked);
+					var isChecked =  $(this).prop("checked");
+					$(this).prop("checked",!isChecked);
 				});
+			});
+			
+			
+			$("#deleteByIds").click(function () {
+				var checks  = $("#table_body").find("input");
 				
+				var myids = new Array();
+				$.each(checks,function (){
+					var isChecked =  $(this).prop("checked");
+					if(isChecked){
+						var input =  '<input type="text" class="form-control" name="ids" style="width: 200px" value="'+$(this).val()+'" >';
+						$("#deleteForm").append(input);
+						
+					}
+				});
+				$("#deleteForm").submit();
 				
 			});
 

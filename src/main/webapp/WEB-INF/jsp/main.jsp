@@ -31,11 +31,11 @@
 			<tr>
 				<th style="width: 20%; padding: 0px">
 					<a href="#none">
-						<img alt="主页" height="100px" src="/img/2012102918455786548.png">
+						<img alt="主页"  src="\company\wp-content\themes\dolcegabbana\images\menu-logo.png">
 					</a>
 				</th>
 				<th style="width: 50%;padding: 0px">
-					<div>
+					<!-- <div>
 						<div align="right">
 						<a href="/userMenu.html" target="iframe_menu">
 							<img alt="用户管理" width="60px" src="/img/facebook.png">
@@ -44,11 +44,14 @@
 							<img alt="商品管理" width="60px" src="/img/facebook.png">
 						</a>
 					</div>
-					</div>
+					</div> -->
 				</th>
 				<th style="width: 30%">
+					<!-- 
 					<div>111111</div>
 					<div>2222222</div>
+					
+					 -->
 				</th>
 			</tr>
 		</tbody>

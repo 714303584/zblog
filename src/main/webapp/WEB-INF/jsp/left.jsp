@@ -42,14 +42,14 @@
 							<li><a href="/admin/user/list.html" target="frane_two"> <i
 									class="icon-tasks"></i> <span>用户管理</span>
 							</a></li>
-							<li><a href="/admin/navigation/list.html" target="frane_two"> <i
+							<li><a href="/admin/navigation/list.html?pageSize=20" target="frane_two"> <i
 									class="icon-tasks"></i> <span>导航管理</span>
 							</a></li>
 							<li><a href="/admin/article/list.html" target="frane_two"> <i
 									class="icon-tasks"></i> <span>文章管理</span>
 							</a></li>
-							<li><a href="list.html" target="frane_two"> <i
-									class="icon-tasks"></i> <span>商品属性</span>
+							<li><a href="/admin/subscriber/list.html" target="frane_two"> <i
+									class="icon-tasks"></i> <span>订阅管理</span>
 							</a></li>
 							<li><a href="list.html" target="frane_two"> <i
 									class="icon-tasks"></i> <span>规格管理</span>
