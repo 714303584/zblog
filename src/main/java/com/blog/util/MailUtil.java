@@ -26,16 +26,31 @@ import javax.mail.internet.MimeMultipart;
 
 public class MailUtil {
 	
+	public static final String MAIL_HOST = "mail.host";
+	public static final String MAIL_TRANSPORT_PROTOCOL = "mail.transport.protocol";
+	public static final String MAIL_SMTP_AUTH = "mail.smtp.auth";
+	
+	public static final String MAIL_USER  = "subscriber.mail.user";
+	public static final String MAIL_PASSWORD = "subscriber.mail.password";
 	
 	
-	public static void main(String[] args) {
+	public static Session session = null;
+	
+	private static Properties mailConfProperties ;
+	
+	
+	
+	
+	
+	static {
 		
+		mailConfProperties = BaseDataCacheUtil.mailProperties;
 		Properties prop = new Properties();
-		prop.setProperty("mail.host", "smtp.sina.com");
-		prop.setProperty("mail.transport.protocol", "smtp");
-		prop.setProperty("mail.smtp.auth", "true");
+		prop.setProperty(MAIL_HOST, mailConfProperties.getProperty("subscriber.mail.stmp"));
+		prop.setProperty(MAIL_TRANSPORT_PROTOCOL, "smtp");
+		prop.setProperty(MAIL_SMTP_AUTH, "true");
 		
-		Session session = Session.getInstance(prop);
+		session = Session.getInstance(prop);
 		
 		session.setDebug(true);
 		
@@ -56,6 +71,36 @@ public class MailUtil {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
+		
+		
+		
+	}
+	
+	
+	public static void sendMessage(MimeMessage message){
+		try {
+			Transport ts = session.getTransport();
+			ts.connect(mailConfProperties.getProperty(MAIL_HOST),
+					mailConfProperties.getProperty(MAIL_USER),
+					mailConfProperties.getProperty(MAIL_PASSWORD));
+			ts.sendMessage(message, message.getAllRecipients());
+			ts.close();
+		} catch (NoSuchProviderException e) {
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		
+		Properties prop = new Properties();
+		prop.setProperty("mail.host", "smtp.sina.com");
+		prop.setProperty("mail.transport.protocol", "smtp");
+		prop.setProperty("mail.smtp.auth", "true");
 		
 		
 		
