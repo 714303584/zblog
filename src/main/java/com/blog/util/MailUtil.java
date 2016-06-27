@@ -88,7 +88,7 @@ public class MailUtil {
 		MimeMessage message = new MimeMessage(session);
 		try {
 			
-			message.setSubject("HTML5邮件测试");
+			message.setSubject(title);
 			message.setFrom("zss19920514@sina.com");
 			
 			 message.setRecipients(RecipientType.TO,  
