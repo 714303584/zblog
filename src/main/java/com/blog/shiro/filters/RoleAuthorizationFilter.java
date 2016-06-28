@@ -18,9 +18,15 @@ public class RoleAuthorizationFilter extends AuthorizationFilter {
 		
 		//根据请求响应获取已登录的Subject对象。
 		Subject subject = getSubject(request, response);
+		return  subject.isPermitted("/admin/index.html");
+//		if(subject == null){
+//			return false;
+//		}else{
+//			return true;
+//		}
 		
 		// 判断登录的用户是否有此权限
-		return subject.isPermitted(uri);
+//		return true;
 	}
 
 }
