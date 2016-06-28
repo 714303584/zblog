@@ -7,6 +7,8 @@ public class BaseDataCacheUtil {
 	
 	public static Properties webSiteProp = null;
 	
+	public static Properties  mailProperties = null;
+	
 	
 	static {
 		
@@ -15,8 +17,15 @@ public class BaseDataCacheUtil {
 			InputStream in = loader.getResourceAsStream("blog.properties");
 			webSiteProp = new Properties();
 			webSiteProp.load(in);
+			
+			
+			
+			InputStream mail = loader.getResourceAsStream("mail/mail.properties");
+			mailProperties = new Properties();
+			mailProperties.load(mail);
+			
 		} catch (Exception e) {
-			System.exit(100);
+			e.printStackTrace();
 		}
 		
 	}
