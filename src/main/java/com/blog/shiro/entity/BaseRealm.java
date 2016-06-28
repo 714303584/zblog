@@ -59,14 +59,24 @@ public class BaseRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo simpleAuthorInfo = new SimpleAuthorizationInfo();  
         //实际中可能会像上面注释的那样从数据库取得  
         
-        System.out.println("_________________________"+currentUsername);
             //添加一个角色,不是配置意义上的添加,而是证明该用户拥有admin角色    
             //添加权限  
             simpleAuthorInfo.addStringPermission("/admin/index.html");  
             simpleAuthorInfo.addStringPermission("/admin/left.html");  
             simpleAuthorInfo.addStringPermission("/admin/info.html");  
-            simpleAuthorInfo.addStringPermission("/admin/user/list.html");  
-            System.out.println("已为用户[mike]赋予了[admin]角色和[admin:manage]权限");  
+            simpleAuthorInfo.addStringPermission("/admin/user/list.html");
+            simpleAuthorInfo.addStringPermission("/admin/user/add.html");
+            simpleAuthorInfo.addStringPermission("/admin/user/show.html");
+            
+            
+            simpleAuthorInfo.addStringPermission("/admin/navigation/list.html");
+            simpleAuthorInfo.addStringPermission("/admin/navigation/add.html");
+            simpleAuthorInfo.addStringPermission("/admin/navigation/add");
+            simpleAuthorInfo.addStringPermission("/admin/navigation/show.html");
+            
+            
+            simpleAuthorInfo.addStringPermission("/admin/article/list.html");  
+            simpleAuthorInfo.addStringPermission("/admin/subscriber/list.html");  
             return simpleAuthorInfo;  
         //若该方法什么都不做直接返回null的话,就会导致任何用户访问/admin/listUser.jsp时都会自动跳转到unauthorizedUrl指定的地址  
         //详见applicationContext.xml中的<bean id="shiroFilter">的配置  
