@@ -1,8 +1,16 @@
 package com.blog.net.controller.admin;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,7 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.blog.dao.SubscriberDaoImpl;
+import com.blog.dao.mail.MailHanlder;
+import com.blog.dao.mail.MailMessage;
 import com.blog.entity.Subscriber;
+import com.blog.util.BaseDataCacheUtil;
 import com.blog.util.page.DefaultPage;
 
 @Controller("adminSubscriberController ")
@@ -88,6 +99,55 @@ public class SubscriberController {
 		long[] ids = new long[1];
 		ids[0] = id;
 		subscriberDaoImpl.deleteByIds(ids);
+		return "redirect:/admin/subscriber/list.html";
+	}
+
+	
+	
+	@RequestMapping(value = "/sendmail", method = { RequestMethod.GET })
+	public String sendMailPage(long id, ModelMap model) {
+		Subscriber subscriber = subscriberDaoImpl.getById(id);
+		model.put("subscriber", subscriber);
+		return "subscriber/send";
+	}
+	
+	
+	@RequestMapping(value = "/send", method = { RequestMethod.POST })
+	public String send(MailMessage message, ModelMap model) {
+		
+		
+		Document doc = Jsoup.parse(message.getContent());
+		
+		Elements imgs =  doc.select("img");
+		String userDir = BaseController.webAppRoot.substring(0, BaseController.webAppRoot.length() - 1);
+		
+		
+		
+		Map<String, String> images = new HashMap<String, String>();
+		Iterator<Element> it = imgs.iterator();
+		while (it.hasNext()) {
+		 	Element img = it.next();
+		 	
+		 	String srcValue = img.attr("src");
+		 	
+		 	if (srcValue.startsWith("/ueditor/jsp/upload/image/")) {
+		 		
+					UUID imageUuid = UUID.randomUUID();
+					String imageUuidV = imageUuid.toString();
+					img.attr("src",  "cid:" + imageUuidV);
+					images.put(imageUuidV, userDir+srcValue);
+				}
+		}
+		
+		System.out.println(doc.html());
+		message.setContent(doc.html());
+		message.setImages(images);
+		message.setSender("zss19920514@sina.com");
+		
+		MailHanlder hanlder = new MailHanlder(BaseDataCacheUtil.mailProperties);
+		hanlder.setMailMessage(message);
+		hanlder.sendMessage();
+		
 		return "redirect:/admin/subscriber/list.html";
 	}
 
