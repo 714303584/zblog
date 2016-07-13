@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.dao.RolePermissionRelationDaoImpl">
+	<resultMap id="mRolePermissionRelation" type="RolePermissionRelation">
+			<result column="id" property="id" />
+			<result column="rid" property="rid" />
+			<result column="pid" property="pid" />
+			<result column="type" property="type" />
+			<result column="status" property="status" />
+			<result column="description" property="description" />
+	</resultMap>
+
+	<!-- 表名 -->
+	<sql id="tableNameSql">
+		role_permission_relation
+	</sql>
+
+	<!-- 用于select查询、insert的公用抽取的列 -->
+	<sql id="commonSelectColumnsPrefix">
+			id, rid, pid, type, status, description 
+	</sql>
+	<!-- 按主键查找条件语句 -->
+	<sql id="conditionOnlyId">
+		id = #{id}
+	</sql>
+	
+	<sql id="mainSql">
+		SELECT
+			<include refid="commonSelectColumnsPrefix"/>
+		FROM
+			<include refid="tableNameSql"/>
+	</sql>
+
+	<sql id="varSql">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)">
+						AND id = #{id}
+					</if>
+					<if test="@Ognl@isNotEmpty(rid)">
+						AND rid = #{rid}
+					</if>
+					<if test="@Ognl@isNotEmpty(pid)">
+						AND pid = #{pid}
+					</if>
+					<if test="@Ognl@isNotEmpty(type)">
+						AND type = #{type}
+					</if>
+					<if test="@Ognl@isNotEmpty(status)">
+						AND status = #{status}
+					</if>
+					<if test="@Ognl@isNotEmpty(description)">
+						AND description = #{description}
+					</if>
+		</where>
+	</sql>
+
+	<select id="findPageBy" parameterType="java.util.Map" resultMap="mRolePermissionRelation">
+ 		<include refid="mainSql"/>
+ 		<include refid="varSql"/>
+		<if test="@Ognl@isNotEmpty(sortColumns)">
+			order by ${sortColumns}
+		</if>
+		<if test="@Ognl@isNotEmpty(page)">
+				${page}
+		</if>
+	</select>
+
+	<select id="getById" parameterType="Long" resultMap="mRolePermissionRelation">
+		<include refid="mainSql"/>
+		where <include refid="conditionOnlyId"/>
+	</select>
+
+	<select id="getCountBy" parameterType="java.util.Map" resultType="INTEGER">
+		SELECT
+			COUNT(*)
+		FROM
+			<include refid="tableNameSql"/>
+		<include refid="varSql"/>
+	</select>
+
+	<select id="findListBy" parameterType="java.util.Map" resultMap="mRolePermissionRelation">
+		<include refid="mainSql"/>
+		<include refid="varSql"/>
+	</select>
+
+	<insert id="save" parameterType="RolePermissionRelation">
+		insert into
+			<include refid="tableNameSql"/>
+		(
+			<include refid="commonSelectColumnsPrefix"/>
+		)
+		values
+		(
+				#{id},
+				#{rid},
+				#{pid},
+				#{type},
+				#{status},
+				#{description}
+			
+		)
+	</insert>
+
+	<update id="update" parameterType="RolePermissionRelation">
+		update
+			<include refid="tableNameSql"/>
+		set
+				id = #{id},
+				rid = #{rid},
+				pid = #{pid},
+				type = #{type},
+				status = #{status},
+				description = #{description}
+		where <include refid="conditionOnlyId"/>
+	</update>
+	<delete id="deleteByIds" parameterType="list">
+		delete from <include refid="tableNameSql"/> 
+		where id in <foreach index="index" item="item" collection="array" separator="," open="(" close=")" >#{item}</foreach>
+	</delete>
+
+	<delete id="deleteById" parameterType="Object">
+		delete from <include refid="tableNameSql"/> where <include refid="conditionOnlyId"/>
+	</delete>
+
+</mapper>

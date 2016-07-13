@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.dao.UrlsDaoImpl">
+	<resultMap id="mUrls" type="Urls">
+			<result column="id" property="id" />
+			<result column="pid" property="pid" />
+			<result column="name" property="name" />
+			<result column="url" property="url" />
+			<result column="description" property="description" />
+			<result column="pname" property="pname" />
+	</resultMap>
+
+	<!-- 表名 -->
+	<sql id="tableNameSql">
+		urls
+	</sql>
+
+	<!-- 用于select查询、insert的公用抽取的列 -->
+	<sql id="commonSelectColumnsPrefix">
+			id, pid, name, url, description, pname 
+	</sql>
+	<!-- 按主键查找条件语句 -->
+	<sql id="conditionOnlyId">
+		id = #{id}
+	</sql>
+	
+	<sql id="mainSql">
+		SELECT
+			<include refid="commonSelectColumnsPrefix"/>
+		FROM
+			<include refid="tableNameSql"/>
+	</sql>
+
+	<sql id="varSql">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)">
+						AND id = #{id}
+					</if>
+					<if test="@Ognl@isNotEmpty(pid)">
+						AND pid = #{pid}
+					</if>
+					<if test="@Ognl@isNotEmpty(name)">
+						AND name = #{name}
+					</if>
+					<if test="@Ognl@isNotEmpty(url)">
+						AND url = #{url}
+					</if>
+					<if test="@Ognl@isNotEmpty(description)">
+						AND description = #{description}
+					</if>
+					<if test="@Ognl@isNotEmpty(pname)">
+						AND pname = #{pname}
+					</if>
+		</where>
+	</sql>
+
+	<select id="findPageBy" parameterType="java.util.Map" resultMap="mUrls">
+ 		<include refid="mainSql"/>
+ 		<include refid="varSql"/>
+		<if test="@Ognl@isNotEmpty(sortColumns)">
+			order by ${sortColumns}
+		</if>
+		<if test="@Ognl@isNotEmpty(page)">
+				${page}
+		</if>
+	</select>
+
+	<select id="getById" parameterType="Long" resultMap="mUrls">
+		<include refid="mainSql"/>
+		where <include refid="conditionOnlyId"/>
+	</select>
+
+	<select id="getCountBy" parameterType="java.util.Map" resultType="INTEGER">
+		SELECT
+			COUNT(*)
+		FROM
+			<include refid="tableNameSql"/>
+		<include refid="varSql"/>
+	</select>
+
+	<select id="findListBy" parameterType="java.util.Map" resultMap="mUrls">
+		<include refid="mainSql"/>
+		<include refid="varSql"/>
+	</select>
+
+	<insert id="save" parameterType="Urls">
+		insert into
+			<include refid="tableNameSql"/>
+		(
+			<include refid="commonSelectColumnsPrefix"/>
+		)
+		values
+		(
+				#{id},
+				#{pid},
+				#{name},
+				#{url},
+				#{description},
+				#{pname}
+			
+		)
+	</insert>
+
+	<update id="update" parameterType="Urls">
+		update
+			<include refid="tableNameSql"/>
+		set
+				id = #{id},
+				pid = #{pid},
+				name = #{name},
+				url = #{url},
+				description = #{description},
+				pname = #{pname}
+		where <include refid="conditionOnlyId"/>
+	</update>
+	<delete id="deleteByIds" parameterType="list">
+		delete from <include refid="tableNameSql"/> 
+		where id in <foreach index="index" item="item" collection="array" separator="," open="(" close=")" >#{item}</foreach>
+	</delete>
+
+	<delete id="deleteById" parameterType="Object">
+		delete from <include refid="tableNameSql"/> where <include refid="conditionOnlyId"/>
+	</delete>
+
+</mapper>
