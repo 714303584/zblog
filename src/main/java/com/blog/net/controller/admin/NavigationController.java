@@ -86,7 +86,7 @@ public class NavigationController {
 	}
 
 	@RequestMapping(value = "/show/{id}", method = { RequestMethod.GET })
-	public String add(@PathVariable long id, ModelMap model) {
+	public String add(long id, ModelMap model) {
 		Navigation navigation = navigationDaoImpl.getById(id);
 		List<Navigation> navigations = navigationDaoImpl.findListBy(null);
 		model.put("navigations", navigations);

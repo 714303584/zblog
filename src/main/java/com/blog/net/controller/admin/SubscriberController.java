@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.blog.dao.SubscriberDaoImpl;
-import com.blog.dao.mail.MailHanlder;
-import com.blog.dao.mail.MailMessage;
 import com.blog.entity.Subscriber;
+import com.blog.mail.MailHanlder;
+import com.blog.mail.MailMessage;
 import com.blog.util.BaseDataCacheUtil;
 import com.blog.util.page.DefaultPage;
 

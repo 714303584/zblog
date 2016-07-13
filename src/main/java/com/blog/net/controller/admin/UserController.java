@@ -52,7 +52,7 @@ public class UserController {
 		return "index";
 	}
 	
-	@RequestMapping(value="/addUser",method={RequestMethod.GET})
+	@RequestMapping(value="/add",method={RequestMethod.GET})
 	public String addUser(){
 		return "user/add";
 	}
