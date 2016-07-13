@@ -85,7 +85,7 @@
 								<td>${navigation.parentname}</td>
 								<td>${navigation.orders }</td>
 								
-								<td><a href="/admin/navigation/show/${navigation.id}" class="btn btn-primary btn-xs">编辑</a> <a
+								<td><a href="/admin/navigation/show.html?id=${navigation.id}" class="btn btn-primary btn-xs">编辑</a> <a
 									href="/admin/navigation/delete/${navigation.id}"
 									class="btn btn-primary btn-xs">删除</a></td>
 
