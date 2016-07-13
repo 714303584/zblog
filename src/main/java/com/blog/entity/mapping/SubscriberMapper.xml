@@ -4,6 +4,7 @@
 	<resultMap id="mSubscriber" type="Subscriber">
 			<result column="id" property="id" />
 			<result column="email" property="email" />
+			<result column="status" property="status" />
 	</resultMap>
 
 	<!-- 表名 -->
@@ -13,7 +14,7 @@
 
 	<!-- 用于select查询、insert的公用抽取的列 -->
 	<sql id="commonSelectColumnsPrefix">
-			id, email 
+			id, email, status 
 	</sql>
 	<!-- 按主键查找条件语句 -->
 	<sql id="conditionOnlyId">
@@ -34,6 +35,9 @@
 					</if>
 					<if test="@Ognl@isNotEmpty(email)">
 						AND email = #{email}
+					</if>
+					<if test="@Ognl@isNotEmpty(status)">
+						AND status = #{status}
 					</if>
 		</where>
 	</sql>
@@ -76,7 +80,8 @@
 		values
 		(
 				#{id},
-				#{email}
+				#{email},
+				#{status}
 			
 		)
 	</insert>
@@ -86,7 +91,8 @@
 			<include refid="tableNameSql"/>
 		set
 				id = #{id},
-				email = #{email}
+				email = #{email},
+				status = #{status}
 		where <include refid="conditionOnlyId"/>
 	</update>
 	<delete id="deleteByIds" parameterType="list">
