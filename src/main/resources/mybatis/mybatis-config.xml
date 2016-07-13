@@ -9,6 +9,20 @@
 		<typeAlias alias="Navigation" type="com.blog.entity.Navigation" />
 		<typeAlias alias="Article" type="com.blog.entity.Article" />
 		<typeAlias alias="Subscriber" type="com.blog.entity.Subscriber" />
+		
+		
+			<!-- 权限 -->
+		<typeAlias alias="Group" type="com.blog.entity.Group" />
+		<typeAlias alias="GroupPermissionRelation" type="com.blog.entity.GroupPermissionRelation" />
+		<typeAlias alias="GroupRoleRelation" type="com.blog.entity.GroupRoleRelation" />
+		<typeAlias alias="Permission" type="com.blog.entity.Permission" />
+		<typeAlias alias="Role" type="com.blog.entity.Role" />
+		<typeAlias alias="UserGroupRelation" type="com.blog.entity.UserGroupRelation" />
+		<typeAlias alias="RolePermissionRelation" type="com.blog.entity.RolePermissionRelation" />
+		<typeAlias alias="UserPermissionRelation" type="com.blog.entity.UserPermissionRelation" />
+		<typeAlias alias="UserRoleRelation" type="com.blog.entity.UserRoleRelation" />
+		<typeAlias alias="Urls" type="com.blog.entity.Urls" />
+		<!-- 权限 end -->
 	</typeAliases>
 	<!-- 实体接口映射资源 -->
 	<!-- 说明：如果xxMapper.xml配置文件放在和xxMapper.java统一目录下，mappers也可以省略，因为org.mybatis.spring.mapper.MapperFactoryBean默认会去查找与xxMapper.java相同目录和名称的xxMapper.xml -->
@@ -17,6 +31,33 @@
 		<mapper resource="com/blog/entity/mapping/NavigationMapper.xml" />
 		<mapper resource="com/blog/entity/mapping/ArticleMapper.xml" />
 		<mapper resource="com/blog/entity/mapping/SubscriberMapper.xml" />
+		
+		
+		<!-- 权限 -->
+		<mapper resource="com/blog/entity/mapping/GroupMapper.xml" />
+		
+		<mapper resource="com/blog/entity/mapping/GroupPermissionRelationMapper.xml" />
+		
+		<mapper resource="com/blog/entity/mapping/GroupRoleRelationMapper.xml" />
+		
+		<mapper resource="com/blog/entity/mapping/PermissionMapper.xml" />
+		
+		<mapper resource="com/blog/entity/mapping/RoleMapper.xml" />
+		
+		<mapper resource="com/blog/entity/mapping/RolePermissionRelationMapper.xml" />
+		
+		<mapper resource="com/blog/entity/mapping/SubscriberMapper.xml" />
+		
+		<mapper resource="com/blog/entity/mapping/UserGroupRelationMapper.xml" />
+		
+		<mapper resource="com/blog/entity/mapping/UserPermissionRelationMapper.xml" />
+		
+		<mapper resource="com/blog/entity/mapping/UserRoleRelationMapper.xml" />
+		
+			<mapper resource="com/blog/entity/mapping/UrlsMapper.xml" />
+		
+		<!-- 权限 end -->
+		
 	</mappers>
 
 </configuration>    
