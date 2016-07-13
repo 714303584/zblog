@@ -36,7 +36,7 @@
 			</ol>
 		</div>
 		<div id="div_table_controller" class="center" style="padding: 4px;">
-			<a class="btn btn-primary btn-xs" href="addUser.html"
+			<a class="btn btn-primary btn-xs" href="add.html"
 				target="frane_two">添加</a> <a id="deleteByIds" class="btn btn-primary btn-xs">删除</a>
 		</div>
 		
