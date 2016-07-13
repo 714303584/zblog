@@ -56,6 +56,7 @@
 						<tr>
 							<th><input type="checkbox"  id="invertSelection"  name="post[]" value="2">标识</th>
 							<th>邮箱</th>
+							<th>状态</th>
 							<th>控制</th>
 						</tr>
 					</thead>
@@ -65,10 +66,23 @@
 							<tr>
 								<td><input type="checkbox"name="post[]" value="${subscriber.id}">${subscriber.id}</td>
 								<td>${subscriber.email }</td>
+								<c:choose>
+									   <c:when test="${subscriber.status == 1 }">   
+									  	 <td>已订阅</td>
+									   </c:when>   
+									  <c:when test="${subscriber.status == 2 }">   
+									  	 <td>已退订</td>
+									   </c:when>  
+								</c:choose>
 								
-								<td><a href="/admin/subscriber/show/${subscriber.id}" class="btn btn-primary btn-xs">编辑</a> <a
-									href="/admin/subscriber/delete/${subscriber.id}"
-									class="btn btn-primary btn-xs">删除</a></td>
+								<td><a href="/admin/subscriber/show/${subscriber.id}" class="btn btn-primary btn-xs">编辑</a> 
+								<a href="/admin/subscriber/delete/${subscriber.id}"
+									class="btn btn-primary btn-xs">删除</a>
+									
+									<a href="/admin/subscriber/sendmail.html?id=${subscriber.id}"
+									class="btn btn-primary btn-xs">发送</a>
+									
+									</td>
 
 							</tr>
 						</c:forEach>

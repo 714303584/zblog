@@ -72,6 +72,18 @@
 									style="width: 200px" required>
 							</div>
 						</div>
+
+						<div class="form-group" style="width: 100%">
+							<label for="inputPassword3" class="col-sm-2 control-label">类型：</label>
+							<div class="col-sm-10">
+								<select id="status" name="status" class="form-control"
+									style="width: 200px">
+									<option value="1">订阅</option>
+									<option value="2">退订</option>
+								</select>
+							</div>
+						</div>
+
 						<div class="form-group" style="width: 100%">
 							<label for="inputPassword3" class="col-sm-2 control-label"></label>
 							<div class="col-sm-10">
@@ -81,18 +93,18 @@
 							</div>
 						</div>
 					</form>
-					
-					
+
+
 					<div style="display: none;">
-						<input type="file" id="images"
-									name="images"  onchange="fileChange(this);" > 
-					
+						<input type="file" id="images" name="images"
+							onchange="fileChange(this);">
+
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		</div>
+
+	</div>
 
 	<script type="text/javascript" src="/js/ueditor/ueditor.config.js"></script>
 	<!-- 编辑器源码文件 -->
