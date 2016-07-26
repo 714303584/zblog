@@ -20,9 +20,10 @@
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/fonts/" mapping="/fonts/**"/>
     <mvc:resources location="/jqui/" mapping="/jqui/**"/>
-    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/black/" mapping="/black/**"/>
+    <mvc:resources location="/ueditor/" mapping="/ueditor/**"/>
     <mvc:resources location="/company/" mapping="/company/**"/>
-     <mvc:resources location="/ueditor/" mapping="/ueditor/**"/>
+    <mvc:resources location="/ueditor/" mapping="/ueditor/**"/>
     <mvc:annotation-driven></mvc:annotation-driven>
     
     
