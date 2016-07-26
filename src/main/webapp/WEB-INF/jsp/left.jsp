@@ -51,8 +51,14 @@
 							<li><a href="/admin/subscriber/list.html" target="frane_two"> <i
 									class="icon-tasks"></i> <span>订阅管理</span>
 							</a></li>
-							<li><a href="list.html" target="frane_two"> <i
-									class="icon-tasks"></i> <span>规格管理</span>
+							<li><a href="/admin/email/list.html" target="frane_two"> <i
+									class="icon-tasks"></i> <span>邮件管理</span>
+							</a></li>
+							<li><a href="/admin/permission/list.html" target="frane_two"> <i
+									class="icon-tasks"></i> <span>权限管理</span>
+							</a></li>
+							<li><a href="/admin/urls/list.html" target="frane_two"> <i
+									class="icon-tasks"></i> <span>路径管理</span>
 							</a></li>
 							<li><a href="Brand.html" target="frane_two"> <i
 									class="icon-tasks"></i> <span>品牌管理</span>

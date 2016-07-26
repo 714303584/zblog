@@ -67,20 +67,22 @@
 
 <![if !(IE 8)]>
 <script src="\company\wp-content\themes\dolcegabbana\js\jwplayer.js"></script>
-<script>jwplayer.key="9xbGxL+DdDX4fD9gps10l0NvFRWnHYFLXeeL23jM0wo=";</script>
+<script>
+	jwplayer.key = "9xbGxL+DdDX4fD9gps10l0NvFRWnHYFLXeeL23jM0wo=";
+</script>
 <![endif]>
 
 <script
 	src="\company\wp-content\themes\dolcegabbana\js\picturefill.min.js"></script>
 
 <script>
-    dataLayer = [{
-    'pageTitle': 'Carretto Siciliano', // page title
-    'pageCategory': 'article', // page category
-    'pageLanguage': 'en', // page language (it, es, de, etc.)
-    'page404': 'false'
-    }];
-     </script>
+	dataLayer = [ {
+		'pageTitle' : 'Carretto Siciliano', // page title
+		'pageCategory' : 'article', // page category
+		'pageLanguage' : 'en', // page language (it, es, de, etc.)
+		'page404' : 'false'
+	} ];
+</script>
 </head>
 <body class="">
 	<!-- Google Tag Manager -->
@@ -88,11 +90,21 @@
 		<iframe src="//www.googletagmanager.com/ns.html?id=GTM-82SNN"
 			height="0" width="0" style="display: none; visibility: hidden"></iframe>
 	</noscript>
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-82SNN');</script>
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start' : new Date().getTime(),
+				event : 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l='
+					+ l
+					: '';
+			j.async = true;
+			j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-82SNN');
+	</script>
 	<!-- End Google Tag Manager -->
 
 	<!--     <script>
@@ -123,22 +135,25 @@
 		id="image-detail-description">
 
 	<script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '995107573893872',
-            xfbml      : true,
-            version    : 'v2.5'
-        });
-    };
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : '995107573893872',
+				xfbml : true,
+				version : 'v2.5'
+			});
+		};
 
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
 	<div class="content-area startpage ">
 
@@ -411,6 +426,100 @@
 
 	<div id="mydiv" class="container-fluid">${article.content }</div>
 
+	<div id="mydiv" class="container-fluid">
+		<div id="main-wrapper">
+
+			<hr class="hr hidden-xs">
+			<div class="title-wrapper">
+				<h2>评论</h2>
+			</div>
+
+				<div class="col-md-6">
+						<div class="form-group">
+							<label for="lblName" id="lblName" class="hidden-xs">名称：</label> 
+						</div>
+					</div>
+
+
+		</div>
+
+
+	</div>
+
+
+	<div id="div_comment" class="container-fluid">
+
+		<hr class="hr hidden-xs">
+		<div id="main-wrapper">
+
+			<div class="title-wrapper">
+				<h2>评论发表</h2>
+			</div>
+
+
+
+
+			<div id="divLegend"></div>
+
+
+			<form action="/company/article/comment" method="post">
+				<input name="aid" type="text" style="display: none;"
+					class="form-control form-dark" value="${article.id}"
+					required="required">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="lblName" id="lblName" class="hidden-xs">名称：</label> <input
+								name="name" type="text" id="txtName"
+								class="form-control form-dark" required="required">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="lblSurname" id="lblSurname" class="hidden-xs">邮箱:</label>
+							<input name="email" type="text" id="txtSurname"
+								class="form-control form-dark" required="required">
+
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="lblSurname" id="lblSurname" class="hidden-xs">内容</label>
+							<textarea name="content" style="width: 100%"
+								class="form-control form-dark" required="required"></textarea>
+
+						</div>
+
+					</div>
+				</div>
+
+
+				<!-- <div class="row">
+
+			<div class="col-md-12"></div>
+		</div>
+		-->
+
+				<div class="row">
+					<div class="col-md-3 col-md-offset-9">
+						<input type="submit" name="ctl00$ContentPlaceHolderBody$RESET"
+							value="提交" id="RESET"
+							class="btn btn-block btn-default hidden-xs btn-lg RESET">
+					</div>
+				</div>
+
+			</form>
+
+
+
+		</div>
+		<hr class="hr hidden-xs">
+
+	</div>
 
 
 	<!-- .content-area -->
@@ -580,11 +689,9 @@
 		$(document).ready(function() {
 			var wHeight = $(window).height();
 			var topImageHeight = wHeight * 0.8;
-			$("#topImage").attr("height",topImageHeight);
-			
+			$("#topImage").attr("height", topImageHeight);
+
 		});
-		
-	
 	</script>
 </body>
 
