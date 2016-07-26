@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.dao.ArticleCommentDaoImpl">
+	<resultMap id="mArticleComment" type="ArticleComment">
+			<result column="id" property="id" />
+			<result column="name" property="name" />
+			<result column="email" property="email" />
+			<result column="create_date" property="createDate" />
+			<result column="content" property="content" />
+			<result column="aid" property="aid" />
+	</resultMap>
+
+	<!-- 表名 -->
+	<sql id="tableNameSql">
+		article_comment
+	</sql>
+
+	<!-- 用于select查询、insert的公用抽取的列 -->
+	<sql id="commonSelectColumnsPrefix">
+			id, name, email, create_date, content, aid 
+	</sql>
+	<!-- 按主键查找条件语句 -->
+	<sql id="conditionOnlyId">
+		id = #{id}
+	</sql>
+	
+	<sql id="mainSql">
+		SELECT
+			<include refid="commonSelectColumnsPrefix"/>
+		FROM
+			<include refid="tableNameSql"/>
+	</sql>
+
+	<sql id="varSql">
+		<where>
+					<if test="@Ognl@isNotEmpty(id)">
+						AND id = #{id}
+					</if>
+					<if test="@Ognl@isNotEmpty(name)">
+						AND name = #{name}
+					</if>
+					<if test="@Ognl@isNotEmpty(email)">
+						AND email = #{email}
+					</if>
+					<if test="@Ognl@isNotEmpty(createDate)">
+						AND create_date = #{createDate}
+					</if>
+					<if test="@Ognl@isNotEmpty(content)">
+						AND content = #{content}
+					</if>
+					<if test="@Ognl@isNotEmpty(aid)">
+						AND aid = #{aid}
+					</if>
+		</where>
+	</sql>
+
+	<select id="findPageBy" parameterType="java.util.Map" resultMap="mArticleComment">
+ 		<include refid="mainSql"/>
+ 		<include refid="varSql"/>
+		<if test="@Ognl@isNotEmpty(sortColumns)">
+			order by ${sortColumns}
+		</if>
+		<if test="@Ognl@isNotEmpty(page)">
+				${page}
+		</if>
+	</select>
+
+	<select id="getById" parameterType="Long" resultMap="mArticleComment">
+		<include refid="mainSql"/>
+		where <include refid="conditionOnlyId"/>
+	</select>
+
+	<select id="getCountBy" parameterType="java.util.Map" resultType="INTEGER">
+		SELECT
+			COUNT(*)
+		FROM
+			<include refid="tableNameSql"/>
+		<include refid="varSql"/>
+	</select>
+
+	<select id="findListBy" parameterType="java.util.Map" resultMap="mArticleComment">
+		<include refid="mainSql"/>
+		<include refid="varSql"/>
+	</select>
+
+	<insert id="save" parameterType="ArticleComment">
+		insert into
+			<include refid="tableNameSql"/>
+		(
+			<include refid="commonSelectColumnsPrefix"/>
+		)
+		values
+		(
+				#{id},
+				#{name},
+				#{email},
+				#{createDate},
+				#{content},
+				#{aid}
+			
+		)
+	</insert>
+
+	<update id="update" parameterType="ArticleComment">
+		update
+			<include refid="tableNameSql"/>
+		set
+				id = #{id},
+				name = #{name},
+				email = #{email},
+				create_date = #{createDate},
+				content = #{content},
+				aid = #{aid}
+		where <include refid="conditionOnlyId"/>
+	</update>
+	<delete id="deleteByIds" parameterType="list">
+		delete from <include refid="tableNameSql"/> 
+		where id in <foreach index="index" item="item" collection="array" separator="," open="(" close=")" >#{item}</foreach>
+	</delete>
+
+	<delete id="deleteById" parameterType="Object">
+		delete from <include refid="tableNameSql"/> where <include refid="conditionOnlyId"/>
+	</delete>
+
+</mapper>

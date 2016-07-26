@@ -1,5 +1,6 @@
 package com.blog.net.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -16,10 +17,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.blog.dao.ArticleCommentDaoImpl;
 import com.blog.dao.ArticleDaoImpl;
 import com.blog.dao.NavigationDaoImpl;
 import com.blog.dao.UserDaoImpl;
 import com.blog.entity.Article;
+import com.blog.entity.ArticleComment;
 import com.blog.entity.Navigation;
 import com.blog.entity.User;
 import com.blog.util.Checker;
@@ -37,6 +40,10 @@ public class IndexController {
 	
 	@Autowired(required = true)
 	UserDaoImpl  userDaoImpl;
+	
+	
+	@Autowired(required = true)
+	ArticleCommentDaoImpl  articleCommentDaoImpl;
 	
 	@RequestMapping(value={"/index"},method={RequestMethod.GET})
 	public String index(ModelMap model){
@@ -96,6 +103,12 @@ public class IndexController {
 				}
 		}
 		
+		Map<String, Object> commentParam = new HashMap<String,Object>();
+		commentParam.put("aid", id);
+		
+		
+	 	List<ArticleComment> comments = articleCommentDaoImpl.findListBy(commentParam);
+		
 		param.put("parent", -1);
 		List<Navigation> bots = navigationDaoImpl.findListBy(param);
 		model.put("bottoms", bots);
@@ -103,6 +116,7 @@ public class IndexController {
 		model.put("child", arChild);
 		model.put("article", article);
 		model.put("navigations", menus);
+		model.put("comments", comments);
 		return "clients/article";
 	}
 	
@@ -218,6 +232,17 @@ public class IndexController {
 		}
 		return "login";
 	}
+	
+	
+	@RequestMapping(value={"/article/comment"},method={RequestMethod.POST})
+	public String articleComment(ArticleComment articleComment, ModelMap model){
+		articleComment.setcreateDate(new Date());
+		articleCommentDaoImpl.save(articleComment);
+		return  "redirect:/company/article/"+articleComment.getaid()+"/info.html";
+	}
+	
+	
+	
 	
 	
 	
