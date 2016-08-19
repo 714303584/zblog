@@ -434,11 +434,16 @@
 				<h2>评论</h2>
 			</div>
 
-				<div class="col-md-6">
+				
+					<c:forEach items="${comments}" var="comment" varStatus="aStatus">
+					<div class="col-md-12">
 						<div class="form-group">
-							<label for="lblName" id="lblName" class="hidden-xs">名称：</label> 
+							<label for="lblName" id="lblName" class="hidden-xs">${comment.name } -- ${comment.createDate }</label>
+							 ${comment.content }
 						</div>
 					</div>
+					
+					</c:forEach>
 
 
 		</div>

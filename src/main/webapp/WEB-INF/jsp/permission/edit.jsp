@@ -107,6 +107,16 @@
 							</div>
 						</div>
 						
+						
+						<div class="form-group" style="width: 100%;">
+							<label for="inputPassword3" class="col-sm-2 control-label">显示名称：</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="displayname" name="displayName"
+									style="width: 200px" value= "${p.displayName }">
+							</div>
+						</div>
+						
+						
 							<!-- 
 						
 						<div class="form-group" style="width: 100%; display: none;">
@@ -119,18 +129,35 @@
 						
 						 -->
 
-						
-						
-						
-
 						<div class="form-group" style="width: 100%;">
 							<label for="inputPassword3" class="col-sm-2 control-label">显示名称：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="displayname" name="displayName"
-									style="width: 200px" value= "${p.displayName }">
+								<table class="table  table-hover table-condensed b-t text-sm"
+									style="margin: 0px">
+									<thead style="padding: 0px;">
+										<tr>
+											<th><input type="checkbox"  id="invertSelection"  name="post[]" value="2">标识</th>
+											<th class="th-sortable" data-toggle="class">名称 <span
+												class="th-sort"> <i class="icon-sort-down text"></i> <i
+													class="icon-sort-up text-active"></i> <i class="icon-sort"></i>
+											</span>
+											</th>
+											<th>URL</th>
+										</tr>
+									</thead>
+									<tbody id="table_body" style="padding: 0px;">
+									
+										 <c:forEach var="url" items="${urls}">
+											<tr>
+												<td><input type="checkbox"name="post[]" value="${url.id}">${url.id}</td>
+												<td>${url.name }</td>
+												<td>${url.url }</td>
+											</tr>
+										</c:forEach> 
+									</tbody>
+								</table>
 							</div>
 						</div>
-						
 						
 						<div class="form-group" style="width: 100%;">
 							<label for="inputPassword3" class="col-sm-2 control-label">权限描述：</label>

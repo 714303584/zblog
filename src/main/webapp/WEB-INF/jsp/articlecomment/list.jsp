@@ -31,17 +31,21 @@
 		<div id="div_table_heading" class="panel-heading"
 			style="padding: 0px; margin: 0px">
 			<ol class="breadcrumb" style="margin: 0px">
-				<li><a href="/admin/permission/list.html">权限管理</a></li>
-				<li><a href="/admin/permission/list.html">权限列表</a></li>
+				<li><a href="/admin/article/list.html">文章管理</a></li>
+				<li><a href="/admin/article/list.html">最新评论</a></li>
+				<li><a href="/admin/article/list.html">${article.title }</a></li>
 			</ol>
 		</div>
 		<div id="div_table_controller" class="center" style="padding: 4px;">
-			<a class="btn btn-primary btn-xs" href="/admin/permission/add.html"
-				target="frane_two">添加</a> <a id="deleteByIds" class="btn btn-primary btn-xs">删除</a>
+			 <a id="deleteByIds" class="btn btn-primary btn-xs">删除</a>
 		</div>
 		
 		<div style="display: none;">
-			<form id="deleteForm" action="/admin/permission/deleteByIds.html" method="post">
+			<form id="deleteForm" action="/admin/acomment/deleteByIds.html" method="post">
+			
+			<input name="page" value="${page.pageNo}">
+			<input name="aid" value="${article.id}">
+			<input name="pageSize" value="${page.pageSize }">
 			
 			
 			</form>
@@ -55,28 +59,31 @@
 					<thead style="padding: 0px;">
 						<tr>
 							<th><input type="checkbox"  id="invertSelection"  name="post[]" value="2">标识</th>
-							<th class="th-sortable" data-toggle="class">名称 <span
+							<th class="th-sortable" data-toggle="class">名称<span
 								class="th-sort"> <i class="icon-sort-down text"></i> <i
 									class="icon-sort-up text-active"></i> <i class="icon-sort"></i>
 							</span>
 							</th>
-							<th>父级</th>
-							<th>控制</th>
+							<th>邮箱</th>
+							<th style="width: 50%">内容</th>
+							<th style="width: 10%">控制</th>
 						</tr>
 					</thead>
 					<tbody id="table_body" style="padding: 0px;">
 
-						 <c:forEach var="permission" items="${pages.elements}">
+						<c:forEach var="articleComment" items="${pages.elements}">
 							<tr>
-								<td><input type="checkbox"name="post[]" value="${permission.id}">${permission.id}</td>
-								<td>${permission.name }</td>
-								<td>${permission.pname }</td>
-								<td><a href="/admin/permission/show.html?id=${permission.id}" class="btn btn-primary btn-xs">编辑</a> <a
-									href="/admin/permission/delete.html?id=${permission.id}"
-									class="btn btn-primary btn-xs">删除</a></td>
-
+								<td><input type="checkbox"name="post[]" value="${articleComment.id}">${articleComment.id}</td>
+								<td>${articleComment.name }</td>
+								<td>${articleComment.email }</td>
+								<td><p style=" word-break:break-all; word-wrap:break-word ;">${articleComment.content }</p></td>
+								
+								<td style="width: 50px"><a
+									href="/admin/acomment/delete.html?aid=${ article.id}&id=${articleComment.id}&page=${pages.pageNo}&pageSize=${pages.pageSize}"
+									class="btn btn-primary btn-xs">删除</a>   
+									</td>
 							</tr>
-						</c:forEach> 
+						</c:forEach>
 
 					</tbody>
 				</table>
@@ -87,14 +94,13 @@
 	<div id="div_table_page" class="panel canelMargin" style="border: 0px">
 		<div class="panel-body canelPadding" >
 			<ul class="pagination pagination-sm canelMargin canelPadding">
-			
-				<li><a href="/admin/navigation/list.html?page=1">第一页</a></li>
+				<li><a href="/admin/acomment/list.html?page=1&aid=${article.id }&pageSize=${pages.pageSize}">第一页</a></li>
 			
 				<c:forEach var="item" varStatus="status" begin="1" end="${pages.pageCount}">
-					<li><a href="/admin/permission/list.html?page=${item}"> ${item}</a> </li>
+					<li><a href="/admin/acomment/list.html?page=${item}&aid=${article.id }&pageSize=${pages.pageSize}"> ${item}</a> </li>
 				</c:forEach>
 				
-				<li><a href="/admin/permission/list.html?page=${pages.pageCount }">下一页</a></li>
+				<li><a href="/admin/acomment/list.html?page=${pages.pageCount }&aid=${article.id }&pageSize=${pages.pageSize}">下一页</a></li>
 			</ul>
 		</div>
 	</div>
@@ -112,8 +118,6 @@
 			var table_hei =  $("#div_table_body").height();
 			var table_headH = $("#table_head").height();
 			$("#table_databody").height(table_hei - table_headH);
-			
-			
 			
 			
 			$("#invertSelection").click(function () {
