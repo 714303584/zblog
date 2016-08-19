@@ -17,13 +17,14 @@ public class ArticleComment implements Serializable {
 			private  Date createDate;
 			private  String content;
 			private  long aid;
+			private  int status;
 		
 		public ArticleComment() {
 
 		}
 		
 		
-		public ArticleComment(long id, String name, String email, Date createDate, String content, long aid  ) {
+		public ArticleComment(long id, String name, String email, Date createDate, String content, long aid, int status  ) {
 				super();
 			 this.id = id;
 			 this.name = name;
@@ -31,6 +32,7 @@ public class ArticleComment implements Serializable {
 			 this.createDate = createDate;
 			 this.content = content;
 			 this.aid = aid;
+			 this.status = status;
 		}
 		
 		
@@ -76,6 +78,13 @@ public class ArticleComment implements Serializable {
 				public void setaid(long  aid) {
 					this.aid =  aid;
 				}
+				public  int  getstatus() {
+					return status;
+				}
+			
+				public void setstatus(int  status) {
+					this.status =  status;
+				}
 	@Override
 	public String toString() {
 		return "ArticleComment ["+
@@ -85,6 +94,7 @@ public class ArticleComment implements Serializable {
 			" createDate:"+ createDate+
 			" content:"+ content+
 			" aid:"+ aid+
+			" status:"+ status+
 		"]";
 	}
 }

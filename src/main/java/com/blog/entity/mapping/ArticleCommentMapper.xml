@@ -8,6 +8,7 @@
 			<result column="create_date" property="createDate" />
 			<result column="content" property="content" />
 			<result column="aid" property="aid" />
+			<result column="status" property="status" />
 	</resultMap>
 
 	<!-- 表名 -->
@@ -17,7 +18,7 @@
 
 	<!-- 用于select查询、insert的公用抽取的列 -->
 	<sql id="commonSelectColumnsPrefix">
-			id, name, email, create_date, content, aid 
+			id, name, email, create_date, content, aid, status 
 	</sql>
 	<!-- 按主键查找条件语句 -->
 	<sql id="conditionOnlyId">
@@ -50,6 +51,9 @@
 					</if>
 					<if test="@Ognl@isNotEmpty(aid)">
 						AND aid = #{aid}
+					</if>
+					<if test="@Ognl@isNotEmpty(status)">
+						AND status = #{status}
 					</if>
 		</where>
 	</sql>
@@ -96,7 +100,8 @@
 				#{email},
 				#{createDate},
 				#{content},
-				#{aid}
+				#{aid},
+				#{status}
 			
 		)
 	</insert>
@@ -110,7 +115,8 @@
 				email = #{email},
 				create_date = #{createDate},
 				content = #{content},
-				aid = #{aid}
+				aid = #{aid},
+				status = #{status}
 		where <include refid="conditionOnlyId"/>
 	</update>
 	<delete id="deleteByIds" parameterType="list">
