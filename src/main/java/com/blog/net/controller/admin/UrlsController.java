@@ -92,8 +92,8 @@ public class UrlsController {
 		return "urls/edit";
 	}
 
-	@RequestMapping(value = "/delete/{id}", method = { RequestMethod.GET })
-	public String deleteById(@PathVariable long id, ModelMap model) {
+	@RequestMapping(value = "/delete", method = { RequestMethod.GET })
+	public String deleteById(long id, ModelMap model) {
 		long[] ids = new long[1];
 		ids[0] = id;
 		urlsDaoImpl.deleteByIds(ids);

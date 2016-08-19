@@ -1,8 +1,6 @@
 package com.blog.net.controller.admin;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -18,13 +16,13 @@ import com.blog.dao.ArticleCommentDaoImpl;
 import com.blog.dao.ArticleDaoImpl;
 import com.blog.dao.NavigationDaoImpl;
 import com.blog.entity.Article;
+import com.blog.entity.ArticleComment;
 import com.blog.entity.Navigation;
-import com.blog.util.DataStatus;
 import com.blog.util.page.DefaultPage;
 
-@Controller("adminArticleController")
-@RequestMapping("/admin/article")
-public class ArticleController {
+@Controller("adminArticleCommentController")
+@RequestMapping("/admin/acomment")
+public class ArticleCommentController {
 
 	@Autowired(required = true)
 	ArticleDaoImpl  articleDaoImpl;
@@ -59,23 +57,26 @@ public class ArticleController {
 	}
 
 	@RequestMapping(value = "/deleteByIds", method = { RequestMethod.POST })
-	public String deleteByIds(long[] ids, ModelMap model) {
+	public String deleteByIds(long[] ids,long aid , int page,int pageSize, ModelMap model) {
 		if (ids != null) {
-			articleDaoImpl.deleteByIds(ids);
+			articleCommentDaoImpl.deleteByIds(ids);
 		}
-		List<Article> navigations = articleDaoImpl.findListBy(null);
-		model.put("articles", navigations);
-		return "article/list";
+		
+		return "redirect:/admin/articlecomment/list.html?aid="+aid+"&page="+page+"&pageSize="+pageSize;
 	}
 
 	@RequestMapping(value = "/list", method = { RequestMethod.GET })
 	public String list(@RequestParam Map<String, Object> filter, ModelMap model) {
 		
-		DefaultPage<Article> pages = new DefaultPage<Article>();
+		DefaultPage<ArticleComment> pages = new DefaultPage<ArticleComment>();
+		
 		
 		Object pageVal =  filter.get("page");
 		if(pageVal != null){
-		 int page = Integer.parseInt(pageVal.toString()) - 1;
+			
+		 int page = Integer.parseInt(pageVal.toString());
+		 if(page >= 1) page = page -1;
+		 
 			filter.remove("page");
 			pages.setPageNo(page);
 		}
@@ -87,30 +88,22 @@ public class ArticleController {
 			pages.setPageSize(pageSize);
 		}
 		
-		int total = articleDaoImpl.getCountBy(filter);
+		int total = articleCommentDaoImpl.getCountBy(filter);
 		
 		pages.setTotalCount(total);
 		
+		Article  article = articleDaoImpl.getById(Long.parseLong(filter.get("aid").toString()));
+		
+		
 		filter.put("page", pages.pageSql());
-		List<Article> articles = articleDaoImpl.findListBy(null);
+		filter.put("sortColumns", "create_date desc");
+		List<ArticleComment> articleComments = articleCommentDaoImpl.findPageBy(filter);
 		
-	 	Iterator<Article> it = articles.iterator();
+		pages.setElements(articleComments);
 		
-	 	Map<Long, Integer> cout = new HashMap<Long, Integer>();
-	 	Map<String, Object> filterParam = new HashMap<String,Object>();
-	 	while (it.hasNext()) {
-	 		long aid = it.next().getid();
-			filterParam.put("aid", aid);
-			filterParam.put("status", DataStatus.CREATED);
-			int count = articleCommentDaoImpl.getCountBy(filterParam);
-			cout.put(aid, count);
-		}
-		
-		
-		pages.setElements(articles);
 		model.put("pages", pages);
-		model.put("countMap", cout);
-		return "article/list";
+		model.put("article", article);
+		return "articlecomment/list";
 	}
 
 	@RequestMapping(value = "/add", method = { RequestMethod.GET })
@@ -135,14 +128,12 @@ public class ArticleController {
 		return "article/edit";
 	}
 
-	@RequestMapping(value = "/delete/{id}", method = { RequestMethod.GET })
-	public String deleteById(@PathVariable long id, ModelMap model) {
+	@RequestMapping(value = "/delete", method = { RequestMethod.GET })
+	public String deleteById(long id,long aid , int page,int pageSize, ModelMap model) {
 		long[] ids = new long[1];
 		ids[0] = id;
-		articleDaoImpl.deleteByIds(ids);
-		List<Article> articles = articleDaoImpl.findListBy(null);
-		model.put("articles", articles);
-		return "article/list";
+		articleCommentDaoImpl.deleteByIds(ids);
+		return "redirect:/admin/acomment/list.html?aid="+aid+"&page="+page+"&pageSize="+pageSize;
 	}
 
 }

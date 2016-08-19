@@ -1,6 +1,7 @@
 package com.blog.net.controller.admin;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.blog.dao.PermissionDaoImpl;
+import com.blog.dao.UrlsDaoImpl;
 import com.blog.entity.Permission;
 import com.blog.entity.Permission;
+import com.blog.entity.Urls;
 import com.blog.util.page.DefaultPage;
 
 @Controller("adminPermissionController ")
@@ -23,7 +26,9 @@ public class PermissionController {
 
 	@Autowired(required = true)
 	PermissionDaoImpl permissionDaoImpl;
-
+	@Autowired(required = true)
+	UrlsDaoImpl urlDaoImpl;
+	
 	@RequestMapping(value = "/save", method = { RequestMethod.POST })
 	public String save(Permission permission, ModelMap model) {
 		permission.setcreateTime(new Date());
@@ -85,13 +90,19 @@ public class PermissionController {
 	public String add(long id, ModelMap model) {
 		Permission Permission = permissionDaoImpl.getById(id);
 		List<Permission> Permissions = permissionDaoImpl.findListBy(null);
+		
+		Map<String, Object> filter = new HashMap<String, Object>();
+		filter.put("pid", Permission.getid());
+		List<Urls> urls = urlDaoImpl.findListBy(filter);
+		
 		model.put("permissions", Permissions);
 		model.put("p", Permission);
+		model.put("urls", urls);
 		return "permission/edit";
 	}
 
-	@RequestMapping(value = "/delete/{id}", method = { RequestMethod.GET })
-	public String deleteById(@PathVariable long id, ModelMap model) {
+	@RequestMapping(value = "/delete", method = { RequestMethod.GET })
+	public String deleteById(long id, ModelMap model) {
 		long[] ids = new long[1];
 		ids[0] = id;
 		permissionDaoImpl.deleteByIds(ids);

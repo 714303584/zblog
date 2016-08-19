@@ -26,6 +26,7 @@ import com.blog.entity.ArticleComment;
 import com.blog.entity.Navigation;
 import com.blog.entity.User;
 import com.blog.util.Checker;
+import com.blog.util.DataStatus;
 
 
 @Controller("companyIndexController")
@@ -237,6 +238,7 @@ public class IndexController {
 	@RequestMapping(value={"/article/comment"},method={RequestMethod.POST})
 	public String articleComment(ArticleComment articleComment, ModelMap model){
 		articleComment.setcreateDate(new Date());
+		articleComment.setstatus(DataStatus.CREATED);
 		articleCommentDaoImpl.save(articleComment);
 		return  "redirect:/company/article/"+articleComment.getaid()+"/info.html";
 	}
