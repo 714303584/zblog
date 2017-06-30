@@ -1,0 +1,227 @@
+<form novalidate class="full-size app-fullscreen brand-secondary sel-settings-dialog" name="settingsForm" id="dialog-settings" toggle>
+    <table class="full-size">
+        <tr>
+            <td class="brand-primary" style="padding: 16px">
+                <div class="max-width-640">
+                    <div>
+                        <a href="" class="transparent button sel-settings-close" style="float: left; margin-right: 16px" ng-click="settingsForm.$valid && hide()">
+                            <i class="mdi-arrow-back"></i>
+                        </a>
+                        <div class="name" translate>
+                            IDS_SETTINGS_TITLE
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="height: 100%">
+                <div class="content-box max-width-640" style="padding: 0 8px">
+                    <div class="settings-header" translate>IDS_SETTINGS_TITLE_USER</div>
+                    <div class="padded card brand-tertiary">
+                        <label class="settings-label" translate>IDS_SETTINGS_DISPLAY_NAME</label>
+                        <input type="text" class="sel-settings-display-name" required ng-model="localStorage.name" focus-input ng-attr-placeholder="{{'IDS_SETTINGS_DISPLAY_NAME_PLACEHOLDER' | translate}}" />
+                    </div>
+
+                    <div class="settings-header" translate>IDS_SETTINGS_MEDIA</div>
+                    <div class="padded card brand-tertiary" ng-init="flashPreviewId='flash-preview-video'" ng-controller="UserMediaPreviewController">
+                        <div ng-show="mediaSources.video">
+                            <label class="settings-label" translate>IDS_SETTINGS_CAMERA</label>
+                            <select class="sel-escalate-camera" ng-model="localStorage.cameraSourceId" ng-options="source.id as (source.label | translate) for source in mediaSources.video" ng-change="previewUserMedia()" ng-show="mediaSources.video">
+                                <option value="" translate>IDS_SETTINGS_CAMERA_DEFAULT</option>
+                            </select>
+                            <div style="text-align: center">
+                                <div class="video-preview" ng-if="platformSettings.hasWebRTC && localStorage.cameraSourceId !== false && localStorage.defaultBandwidth && mediaSources.video.length">
+                                    <video muted autoplay ng-src="{{localMediaStreamURL}}" ng-if="platformSettings.hasWebRTC" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-show="mediaSources.audio">
+                            <label class="settings-label" translate>IDS_SETTINGS_MICROPHONE</label>
+                            <select class="sel-escalate-microphone" ng-model="localStorage.microphoneSourceId" ng-options="source.id as (source.label | translate) for source in mediaSources.audio" ng-change="previewUserMedia()">
+                                <option value="" translate>IDS_SETTINGS_MICROPHONE_DEFAULT</option>
+                            </select>
+                            <div class="audio-preview">
+                                <div class="blue audio-preview" ng-style="{ width: microphoneVolume+'%' }">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-show="mediaSources.output">
+                            <label class="settings-label" translate>IDS_SETTINGS_AUDIO_OUTPUT</label>
+                            <select class="sel-escalate-output" ng-model="localStorage.audioOutputId" ng-options="source.id as (source.label | translate) for source in mediaSources.output">
+                                <option value="" translate>IDS_SETTINGS_AUDIO_OUTPUT_DEFAULT</option>
+                            </select>
+                        </div>
+
+                        <table class="full-size" style="margin: 16px 0">
+                            <tr>
+                                <td>
+                                    <label for="show-device-dialog" translate>IDS_SETTINGS_SHOW_DEVICE_DIALOG</label>
+                                </td>
+                                <td style="vertical-align: middle">
+                                    <input type="checkbox" id="show-device-dialog" class="sel-settings-start-media" ng-model="localStorage.promptMedia" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="mute-on-join" translate>IDS_SETTINGS_MUTE_ON_JOIN</label>
+                                </td>
+                                <td style="vertical-align: middle">
+                                    <input type="checkbox" id="mute-on-join" class="sel-settings-start-media" ng-model="localStorage.muteOnJoin" />
+                                </td>
+                            </tr>
+                        </table>
+                        <label class="settings-label" translate>IDS_BANDWIDTH</label>
+                        <select class="sel-escalate-bandwidth" ng-model="localStorage.defaultBandwidth" ng-options="b.value as (b.name | translate:{bandwidth: b.value}) for b in applicationSettings.bandwidths">
+                        </select>
+                    </div>
+
+                    <span ng-if="!applicationSettings.desktopClientHideRegistrationSettings" ng-init="showAdvancedRegistration=false">
+                        <div ng-if="platformSettings.isAndroidClient || platformSettings.isDesktopClient" class="settings-header" translate>IDS_SETTINGS_REGISTRATION</div>
+                        <div ng-if="platformSettings.isAndroidClient || platformSettings.isDesktopClient" class="padded card brand-tertiary" style="position: relative">
+                            <label class="settings-label" translate>IDS_SETTINGS_REGISTRATION_ALIAS</label>
+                            <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text" class="sel-settings-reg-alias" placeholder="{{'IDS_SETTINGS_REGISTRATION_ALIAS_PLACEHOLDER' | translate}}" ng-model="localStorage.registrationAlias" maxlength="250" />
+                            <span ng-if="showAdvancedRegistration">
+                                <label class="settings-label" translate>IDS_SETTINGS_REGISTRATION_HOSTNAME</label>
+                                <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text" class="sel-settings-reg-hostname" ng-pattern="regexIpHost" ng-model="localStorage.registrationHost" maxlength="250" />
+                                <label class="settings-label" translate>IDS_SETTINGS_REGISTRATION_USERNAME</label>
+                                <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text" class="sel-settings-reg-username" ng-model="localStorage.registrationUsername" maxlength="250" ng-if="showAdvancedRegistration" />
+                            </span>
+                            <label class="settings-label" translate>IDS_SETTINGS_REGISTRATION_PASSWORD</label>
+                            <input type="password" class="sel-settings-reg-password" placeholder="{{'IDS_SETTINGS_REGISTRATION_PASSWORD_PLACEHOLDER' | translate}}" ng-init="registrationPassword = loadRegPwd()" ng-model="registrationPassword" maxlength="250" />
+                            <label>
+                                <input type="checkbox" class="sel-settings-reg-store-password" ng-model="localStorage.registrationStorePassword" ng-change="saveRegPwd(localStorage.registrationStorePassword ? registrationPassword : '')" />
+                                <span translate>IDS_SETTINGS_REGISTRATION_PASSWORD_REMEMBER</span>
+                            </label>
+                            <div style="text-align: right" ng-switch="localStorage.registrationState">
+                                <a href="" class="transparent button sel-settings-show-registration" style="position: absolute; top: 0; right: 8px" ng-click="showAdvancedRegistration=!showAdvancedRegistration">
+                                    <i class="mdi-expand-more" ng-if="!showAdvancedRegistration"></i>
+                                    <i class="mdi-expand-less" ng-if="showAdvancedRegistration"></i>
+                                </a>
+                                <button type="button" ng-click="globalService.register(showAdvancedRegistration ? localStorage.registrationHost : null, localStorage.registrationAlias, showAdvancedRegistration ? localStorage.registrationUsername : null, registrationPassword, update, localStorage.registrationStorePassword);" class="blue button square sel-settings-register" ng-disabled="!localStorage.registrationAlias"
+                                ng-switch-default>
+                                    <span translate>IDS_SETTINGS_REGISTRATION_BUTTON_REGISTER</span>
+                                </button>
+                                <span ng-switch-when="ACTIVE">
+                                    <div>
+                                        <span class="transparent green" style="  margin: 16px;display: inline-block;">
+                                            <i class="mdi-check"></i>
+                                            <span translate>IDS_REGISTRATION_REGISTERED</span>
+                                        </span>
+                                    </div>
+                                    <button type="button" ng-click="globalService.unregister()" class="button square sel-settings-unregister">
+                                        <span translate>IDS_SETTINGS_REGISTRATION_BUTTON_UNREGISTER</span>
+                                    </button>
+                                </span>
+                                <img src="img/spinner-black.svg" class="spinner" ng-switch-when="UNREGISTERING" />
+                                <img src="img/spinner-black.svg" class="spinner" ng-switch-when="REGISTERING" />
+                            </div>
+                        </div>
+
+                        <!-- <div ng-if="platformSettings.isDesktopClient">
+                            <div class="settings-header" translate>IDS_SETTINGS_SOUNDS</div>
+                            <div class="padded card brand-tertiary">
+                                <div>
+                                    <label class="settings-label" translate>IDS_SETTINGS_SOUNDS_RINGTONE</label>
+                                    <select class="sel-settings-ringtone" ng-model="localStorage.ringtone" ng-options="path as (name | translate) for (name, path) in applicationSettings.ringtones">
+                                        <option value="" translate>IDS_SETTINGS_NONE</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div> -->
+                    </span>
+
+                    <div ng-if="(applicationSettings.themes | numkeys) > 1 || (applicationSettings.languages | numkeys) > 1">
+                        <div class="settings-header" translate>IDS_SETTINGS_TITLE_UI</div>
+                        <div class="padded card brand-tertiary">
+                            <div ng-if="(applicationSettings.themes | numkeys) > 1">
+                                <label class="settings-label" translate>IDS_SETTINGS_THEME</label>
+                                <select ng-model="localStorage.theme" ng-options="path as name for (name, path) in applicationSettings.themes"></select>
+                            </div>
+                            <div ng-if="(applicationSettings.languages | numkeys) > 1">
+                                <label class="settings-label" translate>IDS_SETTINGS_LANGUAGE</label>
+                                <select ng-model="localStorage.language" ng-options="key as name for (name, key) in applicationSettings.languages"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-header" translate>IDS_SETTINGS_ADVANCED</div>
+                    <div class="padded card brand-tertiary">
+                        <table class="full-size">
+                            <tr>
+                                <td style="padding: 8px 0">
+                                    <label for="adv1" translate>IDS_SETTINGS_START_MINIMIZED</label>
+                                </td>
+                                <td style="vertical-align: middle">
+                                    <input type="checkbox" id="adv1" ng-model="localStorage.startMinimized" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0">
+                                    <label for="adv2" translate>IDS_SETTINGS_DISCONNECT_PROMPT</label>
+                                </td>
+                                <td style="vertical-align: middle">
+                                    <input type="checkbox" id="adv2" ng-model="localStorage.promptDisconnect" class="sel-settings-disconnect-prompt" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0">
+                                    <label for="adv3" ng-if="platformSettings.hasWebRTC && applicationSettings.enableFullMotionPresentation" translate>IDS_SETTINGS_FULL_MOTION_PRESENTATION</label>
+                                </td>
+                                <td style="vertical-align: middle">
+                                    <input type="checkbox" id="adv3" class="sel-settings-hd-presentation" ng-model="localStorage.fullMotionPresentationByDefault" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0">
+                                    <label for="adv4" translate>IDS_SETTINGS_ENABLE_ANALYTICS</label>
+                                </td>
+                                <td style="vertical-align: middle">
+                                    <input type="checkbox" id="adv4" class="sel-settings-enable-analytics" ng-model="localStorage.analyticsReportingEnabled" />
+                                </td>
+                            </tr>
+                            <tr ng-if="platformSettings.isDesktopClient && !applicationSettings.desktopClientHideRegistrationSettings">
+                                <td style="padding: 8px 0">
+                                    <label for="adv5" translate>IDS_SETTINGS_ENABLE_RINGTONE</label>
+                                </td>
+                                <td style="vertical-align: middle">
+                                    <input type="checkbox" id="adv5" class="sel-settings-ringtone" ng-model="localStorage.enableRingtone" />
+                                    <!-- <select class="sel-settings-ringtone" ng-model="localStorage.ringtone" ng-options="path as (name | translate) for (name, path) in applicationSettings.ringtones">
+                                        <option value="" translate>IDS_SETTINGS_NONE</option>
+                                    </select> -->
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div ng-if="!applicationSettings.serverAddress && !applicationSettings.desktopClientHideConnectionSettings">
+                        <div class="settings-header" translate>IDS_SETTINGS_TITLE_CONNECTION</div>
+                        <div class="padded card brand-tertiary">
+                            <label class="settings-label" translate>IDS_SETTINGS_DEFAULT_DOMAIN</label>
+                            <input type="text" class="sel-settings-default-domain" ng-model="localStorage.defaultDomain" />
+                            <label class="settings-label" translate>IDS_SETTINGS_SERVER_ADDRESS</label>
+                            <input name="server-address" type="text" class="sel-settings-server-address" ng-pattern="regexIpHost" ng-model="localStorage.serverAddress" />
+                        </div>
+                    </div>
+
+                    <div style="text-align: right; margin: 20px 16px;">
+                        <a href="" class="square button" ng-click="globalService.reset()">
+                            <span translate>IDS_SETTINGS_RESET</span>
+                        </a>
+                        <a href="" class="green square button" ng-click="settingsForm.$valid && hide()">
+                            <span translate>IDS_BUTTON_OK</span>
+                        </a>
+                    </div>
+
+                    <div ng-if="platformSettings.isAndroidClient || platformSettings.isDesktopClient" class="settings-header" style="text-align: right; font-size: smaller"><span translate>IDS_SETTINGS_VERSION</span>: {{globalService.VERSION_STRING}}</div>
+                    <!-- <div ng-if="platformSettings.isAndroidClient || platformSettings.isDesktopClient" class="padded card brand-tertiary sel-settings-version">
+
+                    </div> -->
+                    <div class="settings-header"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>

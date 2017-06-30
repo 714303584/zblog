@@ -1,0 +1,82 @@
+<table cellpadding="0" class="full-size sel-main-dialog" ng-class="{'app-fullscreen': !platformSettings.isWebClient}">
+    <tr>
+        <td class="brand-primary">
+            <div class="max-width-640">
+                <div style="padding: 16px">
+                    <div class="menu">
+                        <a href="" class="transparent button sel-connect-settings" ng-attr-title="{{'IDS_SETTINGS_TITLE' | translate}}" ng-click="toggle('dialog-settings')">
+                            <i class="mdi-settings"></i>
+                        </a>
+                    </div>
+                    <div class="avatar">
+                        <div class="badge-container sel-registration-state" ng-switch="localStorage.registrationState">
+                            <div class="badge green" ng-switch-when="ACTIVE">
+                                <i class="mdi-notifications"></i>
+                            </div>
+                            <div class="badge blue" ng-switch-when="REGISTERING">
+                                <i class="mdi-autorenew"></i>
+                            </div>
+                            <div class="badge blue" ng-switch-when="UNREGISTERING">
+                                <i class="mdi-autorenew"></i>
+                            </div>
+                            <div class="badge red" ng-switch-when="FAILED">
+                                <i class="mdi-notifications-off"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="participant-list-name sel-display-name">
+                        {{localStorage.name}}
+                    </div>
+                    <div class="participant-list-name-detail sel-reg-alias" ng-if="platformSettings.isWebClient">
+                        &nbsp;
+                    </div>
+                    <div class="participant-list-name-detail sel-reg-alias" ng-if="!platformSettings.isWebClient && localStorage.registrationState === 'ACTIVE'">
+                        {{localStorage.registrationAlias}}
+                    </div>
+                    <div class="participant-list-name-detail sel-reg-alias" ng-if="!platformSettings.isWebClient && localStorage.registrationState !== 'ACTIVE'" translate>
+                        IDS_SETTINGS_REGISTRATION_STATUS_NOT_REGISTERED
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="height: 100%">
+            <form novalidate class="brand-tertiary max-width-640 card" style="height: 100%" ng-submit="params.conference && loginApp(params.conference, localStorage.name)">
+                <table cellpadding="0" class="full-size">
+                    <tr>
+                        <td>
+                            <div ng-if="errorMessage && platformSettings.isWebClient" class="red login-error sel-error-message" translate="{{errorMessage}}" translate-values="{alias: localStorage.conference}"></div>
+                            <div class="content-header brand-tertiary">
+                                <div style="float: right; padding-right: 16px;">
+                                    <a class="transparent button sel-clear-alias" onclick="$('#alias-field').focus();" ng-click="params.conference=''" ng-if="params.conference">
+                                        <i class="mdi-clear"></i>
+                                    </a>
+                                    <a class="transparent button" onclick="$('#alias-field').focus();" ng-if="!params.conference">
+                                        <i class="mdi-edit"></i>
+                                    </a>
+                                </div>
+                                <div style="overflow: hidden; height: 100%;" ng-init="params.conference=''">
+                                    <input type="text" id="alias-field" maxlength="512" focus-input ng-attr-placeholder="{{'IDS_CONNECT_URI_PROMPT' | translate}}" ng-model="params.conference" class="sel-connect-uri-prompt" style="height: 100%; border: none; margin: 0; padding-left: 16px"
+                                    ng-if="!platformSettings.isAndroidClient" />
+                                    <input force-databinding pattern=".+" type="email" id="alias-field" required maxlength="512" focus-input ng-attr-placeholder="{{'IDS_CONNECT_URI_PROMPT' | translate}}" ng-model="params.conference" class="sel-connect-uri-prompt" style="height: 100%; border: none; margin: 0; padding-left: 16px"
+                                    ng-if="platformSettings.isAndroidClient" />
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td class="box-header" translate>IDS_HISTORY_RECENT</td>
+                    </tr> -->
+                    <tr>
+                        <td class="brand-secondary" style="height: 100%; max-width: 0px; /* MAX-WIDTH hack to work around long entries overflowing*/">
+                            <div class="content-box" style="overflow: overlay">
+                                <div ng-include="'templates/call-history.html'"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,19 @@
+.cameracontrol-buttons {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.cameracontrol-buttons .button {
+    margin: 4px;
+    line-height: 16px;
+    width: 1.5em;
+    height: 1.5em;
+    
+}
+
+.cameracontrol-buttons .button .cameracontrol-action {
+    padding-top: 8px;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+}
