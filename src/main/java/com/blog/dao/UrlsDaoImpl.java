@@ -20,6 +20,8 @@ public interface UrlsDaoImpl {
 	public void update(Urls entity);
 	
 	public int getCountBy(Map<String, Object> map);
+	
+	public List<Urls> findAll();
 
 }
 	

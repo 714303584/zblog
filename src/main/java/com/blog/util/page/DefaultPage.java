@@ -1,6 +1,5 @@
 package com.blog.util.page;
 
-import java.util.Collections;
 import java.util.List;
 
 public class DefaultPage<T> {

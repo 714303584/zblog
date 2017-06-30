@@ -2,6 +2,8 @@ import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Map;
 
+import org.springframework.context.ApplicationContext;
+
 public class Ognl {
 
 	/**
@@ -46,4 +48,5 @@ public class Ognl {
 	public static boolean isNotEmpty(Object o) {
 		return !isEmpty(o);
 	}
+	
 }

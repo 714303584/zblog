@@ -1,12 +1,8 @@
 package com.blog.net.controller.admin;
 
-import java.io.File;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.enterprise.inject.Default;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.blog.dao.NavigationDaoImpl;
 import com.blog.entity.Navigation;
-import com.blog.entity.User;
 import com.blog.util.page.DefaultPage;
 
 @Controller("adminNavigationController ")
