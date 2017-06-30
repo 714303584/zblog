@@ -18,6 +18,7 @@ public class DefaultPage<T> {
 	private int totalCount = 0;
 	
 	
+	
 	/**
 	 * 根据当前页号、页大小（每页数据个数）、当前页数据列表、数据总个数构造分页数据对象的实例。
 	 * @param pageNo 当前页号
